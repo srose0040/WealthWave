@@ -18,6 +18,7 @@
 
         <Border Background="White" Margin="20" CornerRadius="5">
             <Grid>
+
                 <TextBlock Text="Banking App" FontSize="24" FontWeight="Bold" Margin="0 20 0 20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -41,6 +42,7 @@
                         <Button Content="Withdraw" Name="btnWithdraw" Click="btnWithdraw_Click" Width="100" Background="#1976D2" Foreground="White" Margin="10"/>
                         <Button Content="Find Account" Name="btnFindAccount" Click="btnFindAccount_Click" Width="100" Background="#1976D2" Foreground="White" Margin="10"/>
                     </StackPanel>
+
                 </StackPanel>
 
                 <ListView Name="lvAccountInfo" Grid.Row="5" Margin="20" Background="#E3F2FD">
@@ -53,5 +55,6 @@
                 </ListView>
             </Grid>
         </Border>
+        
     </Grid>
 </Window>
