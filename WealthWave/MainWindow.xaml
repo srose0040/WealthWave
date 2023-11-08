@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WealthWave"
         mc:Ignorable="d"
-        Title="WealthWave" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#2196F3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="White" Margin="20" CornerRadius="5">
+            <Grid>
+                <TextBlock Text="Banking App" FontSize="24" FontWeight="Bold" Margin="0 20 0 20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                        <TextBlock Text="Account Number:" VerticalAlignment="Center" Width="150" Foreground="White"/>
+                        <TextBox Name="txtAccountNumber" Width="200" Background="#E3F2FD" Foreground="#2196F3" BorderThickness="0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                        <TextBlock Text="Current Balance:" VerticalAlignment="Center" Width="150" Foreground="White"/>
+                        <TextBox Name="txtCurrentBalance" Width="200" IsEnabled="False" Background="#E3F2FD" Foreground="#2196F3" BorderThickness="0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                        <TextBlock Text="Transaction Amount:" VerticalAlignment="Center" Width="150" Foreground="White"/>
+                        <TextBox Name="txtTransactionAmount" Width="200" Background="#E3F2FD" Foreground="#2196F3" BorderThickness="0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20">
+                        <Button Content="Deposit" Name="btnDeposit" Click="btnDeposit_Click" Width="100" Background="#1976D2" Foreground="White" Margin="10"/>
+                        <Button Content="Withdraw" Name="btnWithdraw" Click="btnWithdraw_Click" Width="100" Background="#1976D2" Foreground="White" Margin="10"/>
+                        <Button Content="Find Account" Name="btnFindAccount" Click="btnFindAccount_Click" Width="100" Background="#1976D2" Foreground="White" Margin="10"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <ListView Name="lvAccountInfo" Grid.Row="5" Margin="20" Background="#E3F2FD">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Account Number" Width="150" DisplayMemberBinding="{Binding AccountNumber}"/>
+                            <GridViewColumn Header="Current Balance" Width="150" DisplayMemberBinding="{Binding CurrentBalance}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
