@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WealthWave", "WealthWave\WealthWave.csproj", "{F28FC084-E012-40F2-908F-365AA8192168}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestBankApplication", "UnitTestBankApplication\UnitTestBankApplication.csproj", "{9638DB4D-016F-4ADD-B8AD-80C9A59A76FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F28FC084-E012-40F2-908F-365AA8192168}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F28FC084-E012-40F2-908F-365AA8192168}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F28FC084-E012-40F2-908F-365AA8192168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9638DB4D-016F-4ADD-B8AD-80C9A59A76FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9638DB4D-016F-4ADD-B8AD-80C9A59A76FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9638DB4D-016F-4ADD-B8AD-80C9A59A76FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9638DB4D-016F-4ADD-B8AD-80C9A59A76FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
