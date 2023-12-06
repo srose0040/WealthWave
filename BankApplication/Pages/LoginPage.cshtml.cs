@@ -20,16 +20,26 @@ namespace BankApplication.Pages
 
         public IActionResult OnPost()
         {
+            // Check if the user clicked on the "Register" link
+            if (HttpContext.Request.Query["registerClicked"] == "True")
+            {
+                // Redirect to the RegisterationForm page
+                return RedirectToPage("/RegisterationForm");
+            }
+
             // Handling form submission logic
             if (ModelState.IsValid)
             {
-                // Authenticate user or perform other actions
+                // redirect users into inner page
                 return RedirectToPage("/InnerHomePage");
             }
 
             // If ModelState is not valid, redisplay the form with validation errors
             return Page();
         }
+
+
+
     }
 
 
