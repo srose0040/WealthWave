@@ -39,9 +39,9 @@
             padding: 20px;
         }
 
-        .search-bar 
+        #search-bar 
         {
-            order: 2; /* Movingthe search baar to da left */
+            order: 99; /* Movingthe search baar to da left */
             margin-left: auto; /* Push the search bar to the left */
         }
 
@@ -59,6 +59,37 @@
             font-size: 16px;
             color: white;
         }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px; /* Adjust as needed */
+            background-color: #007BFF; /* Blue background color */
+            color: #ffffff; /* White text color */
+        }
+
+        .main-navigation ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .main-navigation li {
+            margin: 0 10px;
+        }
+
+        .main-navigation .left {
+            margin-right: auto; /* Push items to the left */
+        }
+
+        .accordion-body ul 
+        {
+           padding: 0;
+            margin: 130px 100px 110px 110px;
+           float: right;
+        }
       
     </style>
 
@@ -73,31 +104,24 @@
 </head>
 <body>
     <header class="header">
-    <div class="header">
         <div class="search-bar">
             <form method="get" action="/Search">
                 <input type="text" name="query" placeholder="Search..." />
                 <button type="submit">Search</button>
             </form>
         </div>
-    </div>
+  
 
     <div class="logo">Bank Logo</div>
-    <nav class="main-navigation">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Services</a>
-                    <div class="dropdown-content">
-                        <a href="/accounts">Accounts</a>
-                        <a href="/transfers">Transfers</a>
-                        <a href="/payments">Payments</a>
-                        <a href="/statements">Statements</a>
-                    </div>
-                </li>
-                <li><a href="/help">Help</a></li>
-            </ul>
-    </nav>
+             
+        <nav class="main-navigation">
+                <ul>
+                
+                    <li class="left"><a href="/">Home</a></li>
+                <li class="right"><a href="/help">Help</a></li>
+                    <li class="right"><a href="/services">Services</a></li>
+                </ul>
+            </nav>
     </header>
     <div class="user-profile">
         <!-- Display user profile or login/logout options -->
