@@ -2,20 +2,50 @@
 @model BankApplication.Pages.InnerHomePageModel
 @{
 }
-<div>
-    <h2>@Model.ViewModel.GreetingMessage</h2>
-</div>
 
-<div>
-    <h3>Your Dashboard</h3>
-    <p>User Account Number: @Model.ViewModel.UserAccountNumber</p>
 
-    <div>
-        <p>Choose an account type:</p>
-        <ul>
-            <li><a asp-page="/SavingAccount">Saving Account</a></li>
-            <li><a asp-page="/CheckingAccount">Checking Account</a></li>
-            <li><a asp-page="/LoanAccount">Loan Account</a></li>
-        </ul>
-    </div>
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Your heading contents -->
+    </head>
+    <body>
+
+        <header>
+            <div class="search-bar">
+                <form method="get" action="/Search">
+                    <input type="text" name="query" placeholder="Search..." />
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </header>
+
+        <div>
+            <h2>@Model.ViewModel.GreetingMessage</h2>
+        </div>
+
+        <div>
+            <h3>(WE WILL CHANGE THIS BY USER NAME)Dashboard</h3>
+            <p>User Account Number: @Model.ViewModel.UserAccountNumber</p>
+         </div>
+        <div>
+            <p>Choose an account type:</p>
+            <ul>
+                <li><a asp-page="/SavingAccount">Saving Account</a></li>
+                <li><a asp-page="/CheckingAccount">Checking Account</a></li>
+                <li><a asp-page="/LoanAccount">Loan Account</a></li>
+            </ul>
+        </div>
+
+        <!--Additional options for users-->
+        <div>
+            <h3>Additional Options</h3>
+            <ul>
+                <li><a asp-page="/Settings">Settings</a></li>
+                <li><a asp-page="/ContactUs">Contact Us</a></li>
+                <li><a asp-page="/NeedHelp">Need Help</a></li>
+            </ul>
+        </div>
+
+    </body>
+</html>

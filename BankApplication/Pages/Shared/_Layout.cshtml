@@ -1,51 +1,93 @@
-﻿<!DOCTYPE html>
+﻿<!-- _Layout.cshtml -->
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BankApplication</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BankApplication.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] Set Pizza Shop</title>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Include your CSS files or CDN links here -->
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <style>
+        /* Your custom styles go here */
+        body 
+        {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            background-color: lightskyblue;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin-left: 20px;
+        }
+
+        header 
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .search-bar 
+        {
+            order: 2; /* Movingthe search baar to da left */
+            margin-right: auto; /* Push the search bar to the left */
+        }
+
+        #main-content {
+            margin-left: 20px; 
+        }
+
+      
+    </style>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous" />
+    </environment>
 </head>
 <body>
+
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">BankApplication</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div class="search-bar">
+            <form method="get" action="/Search">
+                <input type="text" name="query" placeholder="Search..." />
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <!-- Other header content goes here -->
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <div id="main-content">
+        @RenderBody()
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - BankApplication - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
+    <footer class="footer">
+        <p>&copy; @DateTime.Now.Year; Set Pizza Shop</p>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-pzjw8LD+3ds6ZLkfi8fYgWPItLM2MZ6nBuCe0ACg8rhOc9z+q4Bq4w1JckKT2D5g"
+                crossorigin="anonymous"></script>
+    </environment>
 
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

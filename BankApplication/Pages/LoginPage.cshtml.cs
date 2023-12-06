@@ -24,7 +24,7 @@ namespace BankApplication.Pages
             if (ModelState.IsValid)
             {
                 // Authenticate user or perform other actions
-                return RedirectToPage("/Index");
+                return RedirectToPage("/InnerHomePage");
             }
 
             // If ModelState is not valid, redisplay the form with validation errors
