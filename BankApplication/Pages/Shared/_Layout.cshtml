@@ -20,7 +20,7 @@
             font-weight: bold;
             margin: 0;
             padding: 0;
-            background-color: lightskyblue;
+            background-color:aqua;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -35,8 +35,15 @@
             padding: 10px;
         }
 
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
         .content {
             padding: 20px;
+            background-color: aqua;
         }
 
         #search-bar 
@@ -49,22 +56,24 @@
             margin-left: 20px; 
         }
 
-        #submitButtons,
-        .button-inherit 
-        {
+        .submitButtons {
             width: auto;
             margin-top: 30px;
             font-family: 'Times New Roman', Times, serif;
             font-weight: bold;
             font-size: 16px;
             color: white;
+            background-color: darkblue; /* Set the button background color */
+            border: none; /*the button border  */
+            padding: 10px 20px; 
         }
+
 
         .main-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px; /* Adjust as needed */
+            padding: 10px; 
             background-color: #007BFF; /* Blue background color */
             color: #ffffff; /* White text color */
         }

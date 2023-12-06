@@ -19,7 +19,7 @@
         <input type="password" id="password" name="password" class="form-control" asp-for="Login.Password" required />
     </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="submitButtons">Login</button>
 
     <div class="text-center">
         <p>
@@ -27,7 +27,7 @@
         </p>
     </div>
 
-    <form method="post" class="button-inherit">
-            <button type="submit" class="btn redirectToHomePage">Go to Home Page</button>
+    <form method="post" class="submitButtons">
+        <button type="submit" class="btn redirectToHomePage" formaction="/Index">Go to Home Page</button>
     </form>
 </form>
