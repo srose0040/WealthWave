@@ -7,6 +7,8 @@
 
 
 <form method="post">
+
+    <!--For user name and passwordss-->
     <div class="form-group">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" class="form-control" asp-for="Login.Username" required />
@@ -18,4 +20,10 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Login</button>
+
+    <div class="text-center">
+        <p>
+            <a asp-page="/ForgotPassword">Forgot Password?</a> | <a asp-page="/Register">Register</a>
+        </p>
+    </div>
 </form>

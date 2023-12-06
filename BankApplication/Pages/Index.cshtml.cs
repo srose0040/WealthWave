@@ -16,5 +16,13 @@ namespace BankApplication.Pages
         {
 
         }
+
+        public IActionResult OnPost()
+        {
+            // if users clicked login then redirect them into login page 
+
+            // Redirect to the login page
+            return RedirectToPage("/LoginPage");
+        }
     }
 }
