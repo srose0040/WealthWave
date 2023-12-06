@@ -13,7 +13,7 @@ namespace WealthWave
     * By:			Saje Antoine Rose
     * Abilities:	This class initializes its data members, allows access to its methods and properties.
     */
-    internal class Account
+    public class Account
     {
         private int accountNumber;
 
