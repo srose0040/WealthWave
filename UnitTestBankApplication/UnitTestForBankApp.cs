@@ -4,7 +4,7 @@ using System;
 namespace UnitTestBankApplication
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTestForBankApp
     {
         [TestMethod]
         public void TestMethod1()

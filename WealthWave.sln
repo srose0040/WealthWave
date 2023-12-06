@@ -5,7 +5,9 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WealthWave", "WealthWave\WealthWave.csproj", "{F28FC084-E012-40F2-908F-365AA8192168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WealthWave.Test", "WealtWave.Test\WealthWave.Test.csproj", "{D52C16DC-68C2-4509-B689-0A210D50634F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WealthWave.Test", "WealtWave.Test\WealthWave.Test.csproj", "{D52C16DC-68C2-4509-B689-0A210D50634F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApplication", "BankApplication\BankApplication.csproj", "{82FBEF30-089A-45A7-9EC1-DD9E37CFAABD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D52C16DC-68C2-4509-B689-0A210D50634F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D52C16DC-68C2-4509-B689-0A210D50634F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D52C16DC-68C2-4509-B689-0A210D50634F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82FBEF30-089A-45A7-9EC1-DD9E37CFAABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82FBEF30-089A-45A7-9EC1-DD9E37CFAABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82FBEF30-089A-45A7-9EC1-DD9E37CFAABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82FBEF30-089A-45A7-9EC1-DD9E37CFAABD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
