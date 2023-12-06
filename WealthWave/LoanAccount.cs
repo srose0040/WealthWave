@@ -13,7 +13,7 @@ namespace WealthWave
     * By:			Saje Antoine Rose
     * Abilities:	This class initializes its data members, allows access to its methods and properties.
     */
-    internal class LoanAccount : Account
+    public class LoanAccount : Account
     {
         private double loanInterestRate;
         private double loanAmount; // How much does the user owe the bank?
