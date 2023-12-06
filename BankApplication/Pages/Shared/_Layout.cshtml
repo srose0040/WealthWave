@@ -8,11 +8,12 @@
     <title>@ViewData["Title"] Set Pizza Shop</title>
 
     <link rel="stylesheet" href="~/css/site.css" />
+
     <!-- Include your CSS files or CDN links here -->
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <style>
-        /* Your custom styles go here */
+        /* styles go here */
         body 
         {
             font-family: 'Times New Roman', Times, serif, sans-serif;
@@ -26,24 +27,38 @@
             margin-left: 20px;
         }
 
-        header 
+        .header, .footer 
         {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: darkblue; /* Blue background color */
+            color: #ffffff; /* White text color */
+            text-align: center;
             padding: 10px;
+        }
+
+        .content {
+            padding: 20px;
         }
 
         .search-bar 
         {
             order: 2; /* Movingthe search baar to da left */
-            margin-right: auto; /* Push the search bar to the left */
+            margin-left: auto; /* Push the search bar to the left */
         }
 
         #main-content {
             margin-left: 20px; 
         }
 
+        #submitButtons,
+        .button-inherit 
+        {
+            width: auto;
+            margin-top: 30px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            font-size: 16px;
+            color: white;
+        }
       
     </style>
 
@@ -57,23 +72,47 @@
     </environment>
 </head>
 <body>
-
-    <header>
+    <header class="header">
+    <div class="header">
         <div class="search-bar">
             <form method="get" action="/Search">
                 <input type="text" name="query" placeholder="Search..." />
                 <button type="submit">Search</button>
             </form>
         </div>
-        <!-- Other header content goes here -->
+    </div>
+
+    <div class="logo">Bank Logo</div>
+    <nav class="main-navigation">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Services</a>
+                    <div class="dropdown-content">
+                        <a href="/accounts">Accounts</a>
+                        <a href="/transfers">Transfers</a>
+                        <a href="/payments">Payments</a>
+                        <a href="/statements">Statements</a>
+                    </div>
+                </li>
+                <li><a href="/help">Help</a></li>
+            </ul>
+    </nav>
     </header>
+    <div class="user-profile">
+        <!-- Display user profile or login/logout options -->
+    </div>
+    <div class="notifications">
+        <!-- Display notifications or alerts -->
+    </div>
 
     <div id="main-content">
         @RenderBody()
     </div>
+   
 
     <footer class="footer">
-        <p>&copy; @DateTime.Now.Year; Set Pizza Shop</p>
+        <p>&copy; @DateTime.Now.Year; Niyala Bank</p>
     </footer>
 
     <environment include="Development">
