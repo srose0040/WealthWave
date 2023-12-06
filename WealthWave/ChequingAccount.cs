@@ -13,7 +13,7 @@ namespace WealthWave
     * By:			Saje Antoine Rose
     * Abilities:	This class initializes its data members, allows access to its methods and properties.
     */
-    internal class ChequingAccount : Account
+    public class ChequingAccount : Account
     {
         private double annualFee;
         private int quartersOfTheYear; // used to determine when the annual fee should be charged
