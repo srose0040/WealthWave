@@ -21,17 +21,14 @@
 
     <button type="submit" class="submitButtons">Login</button>
 
-    <form method="post" >
-        <div class="text-center">
+    <div class="form-group">
             <p>
                 <!--This must need to redirect users tu passwrd and regsr pages-->
                 <a asp-page="/ForgotPassword">Forgot Password?</a> |
                 <a asp-page="/RegisterationForm" asp-route-registerClicked="True">Register</a>
             </p>
-        </div>
-    </form>
+    </div> 
+    
+    <button type="submit" class="btn redirectToHomePage" formaction="/Index">Go to Home Page</button>
 
-    <form method="post" class="submitButtons">
-        <button type="submit" class="btn redirectToHomePage" formaction="/Index">Go to Home Page</button>
-    </form>
 </form>
