@@ -1,0 +1,17 @@
+﻿@page
+@model SavingsAccountPageModel
+@{
+    ViewData["Title"] = "Savings Account";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p><strong>Account Number:</strong> @Model.AccountNumber</p>
+<p><strong>Current Balance:</strong> @Model.CurrentBalance</p>
+<p><strong>Interest Rate:</strong> @Model.InterestRate</p>
+
+<form method="post">
+    <label for="depositAmount">Deposit Amount:</label>
+    <input type="number" id="depositAmount" name="depositAmount" required />
+    <button type="submit">Deposit</button>
+</form>
