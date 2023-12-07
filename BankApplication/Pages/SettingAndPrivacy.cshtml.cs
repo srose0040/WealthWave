@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BankApplication.Pages
 {
-    public class PrivacyModel : PageModel
+    public class SettingAndPrivacyModel : PageModel
     {
-        private readonly ILogger<PrivacyModel> _logger;
+        private readonly ILogger<SettingAndPrivacyModel> _logger;
 
-        public PrivacyModel(ILogger<PrivacyModel> logger)
+        public SettingAndPrivacyModel(ILogger<SettingAndPrivacyModel> logger)
         {
             _logger = logger;
         }

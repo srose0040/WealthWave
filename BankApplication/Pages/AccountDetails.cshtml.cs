@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BankApplication
 {
-    public class IndexModel : PageModel
+    public class AccountDetailInfoModel : PageModel
     {
         public void OnGet()
         {

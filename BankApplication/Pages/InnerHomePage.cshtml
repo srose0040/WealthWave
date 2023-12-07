@@ -19,35 +19,35 @@
             <h3>(WE WILL CHANGE THIS BY USER NAME)Dashboard</h3>
             <p>User Account Number: @Model.ViewModel.UserAccountNumber</p>
          </div>
-        <div>
-            <p>Choose an account type:</p>
-            <ul>
-                <li><a asp-page="/SavingAccount">Saving Account</a></li>
-                <li><a asp-page="/CheckingAccount">Checking Account</a></li>
-                <li><a asp-page="/LoanAccount">Loan Account</a></li>
-            </ul>
-        </div>
+    <div class="bodyTitles">
+        <p>Choose an account type:</p>
+        <ul>
+            <li><a asp-page="/SavingAccount">Savings Account</a></li>
+            <li><a asp-page="/CheckingAccount">Checking Account</a></li>
+            <li><a asp-page="/LoanAccount">Loan Account</a></li>
+        </ul>
+    </div>
+
 
         <!--Additional options for users-->
-        <div>
+    <div class ="bodyTitles">
             <h3>Additional Options</h3>
             <ul>
-                <li><a asp-page="/Settings">Settings</a></li>
-                <li><a asp-page="/ContactUs">Contact Us</a></li>
-                <li><a asp-page="/NeedHelp">Need Help</a></li>
+            <li><a asp-page="/SettingAndPrivacy">Setting and Privacy</a></li>
+            <li><a asp-page="/ContactSupport">Contact and Support</a></li>
             </ul>
         </div>
-
-        <div class="accordion-body">
+    <div class="bodyTitles" style="position: fixed; top: 300px; right: 100px;">
         <ul>
-            <li><a asp-page="/Home">Home</a></li>
-            <li><a asp-page="/Account">Account</a></li>
-            <li><a asp-page="/NeedHelp">Transaction</a></li>
+            <li><a asp-page="/Index">Home</a></li>
+            <li><a asp-page="/AccountDetails">Account</a></li>
+            <li><a asp-page="TransactionsHistory">Transaction</a></li>
             <li><a asp-page="/Deposit">Deposit</a></li>
-            <li><a asp-page="/Savings">Savings</a></li>
+            <li><a asp-page="/SavingAccount">Savings</a></li>
         </ul>
+    </div>
 
-        </div>
+
 
     </body>
 </html>
