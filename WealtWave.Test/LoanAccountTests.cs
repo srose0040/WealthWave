@@ -27,6 +27,27 @@ namespace WealthWave.Test
             
         }
 
+        [Fact]
+        public void LoanAccountBoundary_ApplyForLoan_GetApprovedForLoanAmount()
+        {
+            // Arrange varables, classes mocks
+            int amountToApplyFor = 25000;
+            var userAccount = new LoanAccount();
+            string result;
+
+
+            // Act
+            userAccount.ApplyForLoan(amountToApplyFor, out result);
+
+
+            // Assert 
+            result.Should().NotBeNullOrWhiteSpace();
+            result.Should().Contain("Your loan request has been granted.", Exactly.Once());
+
+        }
+
+
+
         [Theory]
         [InlineData(10000, 0, 10611)]
         public void LoanAccount_InterestCalculation_NoticeInterestAppliedToLoan(double testValue, double expectedOutput, double upperRangeOfOutput)
