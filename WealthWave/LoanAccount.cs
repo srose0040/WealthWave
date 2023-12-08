@@ -89,35 +89,35 @@ namespace WealthWave
         * Parameters:  double requestedLoanAmount: How much the user wants to borrow from the bank.
         * Returns:     Void.
         */
-        public void ApplyForLoan(double requestedLoanAmount)
+        public void ApplyForLoan(double requestedLoanAmount, out string message)
         {
-
+            message = string.Empty;
 
             // If you already have a loan NO LOAN
             if (LoanAmount > Constants.kDefaultLoanAmount)
             {
-                Console.WriteLine("You cannot apply for a new loan without paying off your loan in full first.\nYou still have {0:C} as an outstanding balance.\nPlease make a payment to keep your account in good standing.\n", LoanAmount);
+                message = string.Format("You cannot apply for a new loan without paying off your loan in full first.\nYou still have {0:C} as an outstanding balance.\nPlease make a payment to keep your account in good standing.\n", LoanAmount);
             }
             else if (requestedLoanAmount > Constants.kMaxLoanAmount) // if they want too much money that the bank is not prepared to give
             {
 
-                Console.WriteLine("Your loan request is greater than the maximum allowed amount. Your loan has been capped at {0:C}.\nThe interest rate of {1:0.0}% has already been applied\n", Constants.kMaxLoanAmount, Constants.kLoanAccountPrintableInterestRate);
+                message = string.Format("Your loan request is greater than the maximum allowed amount. Your loan has been capped at {0:C}.\nThe interest rate of {1:0.0}% has already been applied\n", Constants.kMaxLoanAmount, Constants.kLoanAccountPrintableInterestRate);
                 LoanAmount = Constants.kMaxLoanAmount; // forcing them to take what we will give
             }
             else if (requestedLoanAmount < Constants.kOne) // If they want a loan of $0
             {
-                Console.WriteLine("The minimum amount to be approved for a loan is $1\n");
+                message = "The minimum amount to be approved for a loan is $1\n";
             }
             else
             {
                 if (CurrentBalance < Constants.kZero) // if they have an outstanding balance
                 {
-                    Console.WriteLine("You cannot apply for a new loan without settling your account first.\nYou still have {0:C} as an outstanding balance.\nPlease make a payment to keep your account in good standing.\n", CurrentBalance);
+                    message = string.Format("You cannot apply for a new loan without settling your account first.\nYou still have {0:C} as an outstanding balance.\nPlease make a payment to keep your account in good standing.\n", CurrentBalance);
                 }
                 else // Everything is A-OK
                 {
 
-                    Console.WriteLine("Your loan request has been granted. You have been granted a loan of {0:C}.\nThe interest rate of {1:0.0}% has already been applied\nPlease withdraw the loan amount in full to avoid additional fees\n", requestedLoanAmount, Constants.kLoanAccountPrintableInterestRate);
+                    message = string.Format("Your loan request has been granted. You have been granted a loan of {0:C}.\nThe interest rate of {1:0.0}% has already been applied\nPlease withdraw the loan amount in full to avoid additional fees\n", requestedLoanAmount, Constants.kLoanAccountPrintableInterestRate);
                     LoanAmount = requestedLoanAmount;
                 }
             }

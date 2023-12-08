@@ -16,9 +16,10 @@ namespace WealthWave.Test
             // Arrange varables, classes mocks
             var userAccount = new SavingsAccount(defaultBalance);
             double upperRangeOfOutput = 9662;
+            string message;
 
             // Act
-            userAccount.DepositTransaction(testValue);
+            userAccount.DepositTransaction(testValue, out message);
             var result = userAccount.CurrentBalance;
 
             // Assert 

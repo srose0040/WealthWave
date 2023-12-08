@@ -39,7 +39,7 @@ namespace WealthWave
             {
                 if (lvAccountInfo.SelectedItem is Account selectedAccount)
                 {
-                    selectedAccount.DepositTransaction(depositAmount);
+                   // selectedAccount.DepositTransaction(depositAmount);
                     RefreshListView();
                 }
             }
@@ -57,7 +57,7 @@ namespace WealthWave
             {
                 if (lvAccountInfo.SelectedItem is Account selectedAccount)
                 {
-                    selectedAccount.WithdrawTransaction(withdrawAmount);
+                    //selectedAccount.WithdrawTransaction(withdrawAmount);
                     RefreshListView();
                 }
             }

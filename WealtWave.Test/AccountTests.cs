@@ -9,10 +9,11 @@ namespace WealthWave.Test
             int amountToDeposit = 100;
             int defaultBalanceOfAccount = 10500;
             int expectedBalanceInBank = 10600;
+            string message;
             var userAccount = new Account(defaultBalanceOfAccount);
 
             // Act
-            userAccount.DepositTransaction(amountToDeposit);
+            userAccount.DepositTransaction(amountToDeposit, out message);
             var result = userAccount.CurrentBalance;
 
             // Assert 
@@ -31,10 +32,11 @@ namespace WealthWave.Test
             int defaultBalanceOfAccount = 10600;
             var userAccount = new Account(defaultBalanceOfAccount);
             int expectedBalanceInBank = 9960;
-            
+            string message;
+
 
             // Act
-            userAccount.WithdrawTransaction(amountToWithdraw);
+            userAccount.WithdrawTransaction(amountToWithdraw, out message);
             var result = userAccount.CurrentBalance;
 
             // Assert 

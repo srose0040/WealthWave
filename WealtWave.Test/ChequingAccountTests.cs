@@ -14,10 +14,11 @@ namespace WealthWave.Test
         {
             // Arrange varables, classes mocks
             var userAccount = new ChequingAccount(defaultBalance);
+            string message;
 
 
             // Act
-            userAccount.WithdrawTransaction(testValue);
+            userAccount.WithdrawTransaction(testValue, out message);
             var result = userAccount.CurrentBalance;
 
             // Assert 
