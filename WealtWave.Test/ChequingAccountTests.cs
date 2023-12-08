@@ -30,6 +30,26 @@ namespace WealthWave.Test
 
 
         [Theory]
+        [InlineData(-149999, 150000, -299999)]
+        public void ChequingAccountException_WithdrawTransaction_WithdrawRequestedAmount(double testValue, double defaultBalance, double expectedOutput)
+        {
+            // Arrange varables, classes mocks
+            var userAccount = new ChequingAccount(defaultBalance);
+            string message;
+
+
+            // Act
+            userAccount.WithdrawTransaction(testValue, out message);
+            var result = userAccount.CurrentBalance;
+
+            // Assert 
+            result.Should().NotBe(null);
+            result.Should().Be(expectedOutput);
+            result.Should().BePositive();
+
+        }
+
+        [Theory]
         [InlineData(149999, 150000, 1)]
         public void ChequingAccountBoundary_WithdrawTransaction_WithdrawRequestedAmount(double testValue, double defaultBalance, double expectedOutput)
         {
@@ -51,4 +71,7 @@ namespace WealthWave.Test
     }
 
 
+  
 }
+
+

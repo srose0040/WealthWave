@@ -98,9 +98,9 @@ namespace WealthWave.Test
         public void AccountException_DepositTransaction_DepositRequestedAmount()
         {
             // Arrange varables, classes mocks
-            int amountToDeposit = 1000000;
+            int amountToDeposit = -1000000;
             int defaultBalanceOfAccount = 10500;
-            int expectedBalanceInBank = 1010500;
+            int expectedBalanceInBank = -1010500;
             string message;
             var userAccount = new Account(defaultBalanceOfAccount);
 
@@ -121,10 +121,10 @@ namespace WealthWave.Test
         public void AccountException_WithdrawTransaction_WithdrawRequestedAmount()
         {
             // Arrange varables, classes mocks
-            int amountToWithdraw = 999999;
+            int amountToWithdraw = 0;
             int defaultBalanceOfAccount = 1000000;
             var userAccount = new Account(defaultBalanceOfAccount);
-            int expectedBalanceInBank = 1;
+            int expectedBalanceInBank = 1000000;
             string message;
 
 
