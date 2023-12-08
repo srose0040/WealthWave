@@ -72,8 +72,58 @@ namespace WealthWave.Test
         }
 
         [Theory]
+        [InlineData(25000, 26525, 26526)]
+        public void LoanAccountBoundary_InterestCalculation_NoticeInterestAppliedToLoan(double testValue, double expectedOutput, double upperRangeOfOutput)
+        {
+            // Arrange varables, classes mocks
+            var userAccount = new LoanAccount();
+            string message;
+
+
+
+            // Act
+            userAccount.ApplyForLoan(testValue, out message);
+            userAccount.InterestCalculation();
+            var result = userAccount.LoanAmount;
+
+
+            // Assert 
+            result.Should().NotBe(null);
+            // Counts for floating point discrepancy
+            result.Should().BeInRange(expectedOutput, upperRangeOfOutput);
+            result.Should().BePositive();
+        }
+
+
+
+
+        [Theory]
         [InlineData(10000, -10000)]
         public void LoanAccount_WithdrawTransaction_WithdrawRequestedAmount(double testValue, double expectedOutput)
+        {
+            // Arrange varables, classes mocks
+            var userAccount = new LoanAccount();
+            string message;
+
+
+
+            // Act
+            userAccount.ApplyForLoan(testValue, out message);
+            userAccount.WithdrawTransaction(testValue, out message);
+            var result = userAccount.CurrentBalance;
+
+
+            // Assert 
+            result.Should().NotBe(null);
+            // Counts for floating point discrepancy
+            result.Should().Be(expectedOutput);
+            result.Should().BeNegative();
+        }
+
+
+        [Theory]
+        [InlineData(25000, -25000)]
+        public void LoanAccountBoundary_WithdrawTransaction_WithdrawRequestedAmount(double testValue, double expectedOutput)
         {
             // Arrange varables, classes mocks
             var userAccount = new LoanAccount();
@@ -118,8 +168,54 @@ namespace WealthWave.Test
         }
 
         [Theory]
+        [InlineData(25000, 0)]
+        public void LoanAccountBoundary_DebtCollector_CollectUserDebt(double testValue, double expectedOutput)
+        {
+            // Arrange varables, classes mocks
+            var userAccount = new LoanAccount();
+            string message;
+
+
+
+            // Act
+            userAccount.ApplyForLoan(testValue, out message);
+            userAccount.DebtCollector();
+            var result = userAccount.LoanAmount;
+
+
+            // Assert 
+            result.Should().NotBe(null);
+            // Counts for floating point discrepancy
+            result.Should().Be(expectedOutput);
+
+        }
+
+        [Theory]
         [InlineData(800, 12546, 12462.50, 12463)]
         public void LoanAccount_DepositTransaction_DepositRequestedAmount(double testValue, double requestedLoan, double expectedOutput, double upperRangeOfOutput)
+        {
+            // Arrange varables, classes mocks
+            var userAccount = new LoanAccount();
+            string message;
+
+            // Act
+            userAccount.ApplyForLoan(requestedLoan, out message);
+            userAccount.WithdrawTransaction(requestedLoan, out message); // Must withdraw loan before paying it off
+            userAccount.DepositTransaction(testValue, out message);
+            var result = userAccount.LoanAmount* 1.061;
+           
+
+            // Assert 
+            result.Should().NotBe(null);
+            // Counts for floating point discrepancy
+            result.Should().BeInRange(expectedOutput, upperRangeOfOutput);
+            result.Should().BePositive();
+
+        }
+
+        [Theory]
+        [InlineData(1000,25000, 25464, 25465)]
+        public void LoanAccountBoundary_DepositTransaction_DepositRequestedAmount(double testValue, double requestedLoan, double expectedOutput, double upperRangeOfOutput)
         {
             // Arrange varables, classes mocks
             var userAccount = new LoanAccount();
@@ -131,9 +227,9 @@ namespace WealthWave.Test
             userAccount.ApplyForLoan(requestedLoan, out message);
             userAccount.WithdrawTransaction(requestedLoan, out message); // Must withdraw loan before paying it off
             userAccount.DepositTransaction(testValue, out message);
-            var result = userAccount.LoanAmount;
-
-
+ 
+            var result = userAccount.LoanAmount - testValue  * 1.061 ;
+            
             // Assert 
             result.Should().NotBe(null);
             // Counts for floating point discrepancy
@@ -141,7 +237,6 @@ namespace WealthWave.Test
             result.Should().BePositive();
 
         }
-
 
     }
 }
