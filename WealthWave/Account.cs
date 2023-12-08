@@ -132,9 +132,9 @@ namespace WealthWave
         * Parameters:  Void.
         * Returns:     Void.
         */
-        public void GetAccountInfo()
+        public string GetAccountInfo()
         {
-            Console.WriteLine("Account Number: {0}\nYour Account Balance Is: {1:C}\n", AccountNumber, CurrentBalance); // Maybe use \n?
+            return string.Format("Account Number: {0}\nYour Account Balance Is: {1:C}\n", AccountNumber.ToString(), CurrentBalance.ToString()); // Maybe use \n?
         }
 
         /*
@@ -143,22 +143,26 @@ namespace WealthWave
         * Parameters:  double accountRate: The account level
         * Returns:     Void.
         */
-        public virtual void GetAccountInfo(double accountRate)
+        public virtual string GetAccountInfo(double accountRate)
         {
             if (AccountLevel == Constants.kSavingsAccount)
             {
-                Console.WriteLine("Account Type: Savings Account\nAccount Number: {0}\nYour Account Balance Is: {1:C}\nYour Interest Rate Is: {2:0.00}%\n",
-                    AccountNumber, CurrentBalance, Constants.kSavingsAccountPrintableInterestRate);
+                return string.Format("Account Type: Savings Account\nAccount Number: {0}\nYour Account Balance Is: {1:C}\nYour Interest Rate Is: {2:0.00}%\n",
+                    AccountNumber.ToString(), CurrentBalance.ToString(), Constants.kSavingsAccountPrintableInterestRate);
             }
             else if (AccountLevel == Constants.kChequingAccount)
             {
-                Console.WriteLine("Account Type: Chequing Account\nAccount Number: {0}\nYour Account Balance Is: {1:C}\nYour Annual Fee Is: {2:C}\n",
-                    AccountNumber, CurrentBalance, accountRate);
+                return string.Format("Account Type: Chequing Account\nAccount Number: {0}\nYour Account Balance Is: {1:C}\nYour Annual Fee Is: {2:C}\n",
+                    AccountNumber.ToString(), CurrentBalance.ToString(), accountRate.ToString());
             }
             else if (AccountLevel == Constants.kLoanAccount)
             {
-                Console.WriteLine("Account Type: Loan Account\nAccount Number: {0}\nYour Account Balance Is: {1:C}\nYour Loan Interest Rate Is: {2:0.00}%\n",
-                    AccountNumber, CurrentBalance, Constants.kLoanAccountPrintableInterestRate);
+                return string.Format("Account Type: Loan Account\nAccount Number: {0}\nYour Account Balance Is: {1:C}\nYour Loan Interest Rate Is: {2:0.00}%\n",
+                    AccountNumber.ToString(), CurrentBalance.ToString(), Constants.kLoanAccountPrintableInterestRate);
+            }
+            else
+            {
+                return "Account type not recognized.";
             }
 
         }
@@ -177,7 +181,7 @@ namespace WealthWave
             }
             else
             {
-                Console.WriteLine("Please deposit a positive amount... \n"); // This error message is because it is impossible to deposit a negative amount into an account
+                throw new ArgumentException("Please deposit a positive amount... \n"); // This error message is because it is impossible to deposit a negative amount into an account
             }
         }
 
@@ -213,7 +217,7 @@ namespace WealthWave
             }
             else
             {
-                Console.WriteLine("Please withdraw a positive amount... \n");
+                throw new ArgumentException("Please withdraw a positive amount... \n");
                 // This error message is because it is impossible to withdraw a negative amount into an account in the terms of this program you must withdraw a positive double
             }
         }
@@ -224,9 +228,9 @@ namespace WealthWave
         * Parameters:  Void.
         * Returns:     Void.
         */
-        public void InvalidTransaction()
+        public string InvalidTransaction()
         {
-            Console.WriteLine("Sorry, you have insuffcient funds to complete this transaction... \nPlease withdraw an amount no greater than {0:C}\n", CurrentBalance);
+            return string.Format("Sorry, you have insuffcient funds to complete this transaction... \nPlease withdraw an amount no greater than {0:C}\n", CurrentBalance.ToString());
         }
 
     }
