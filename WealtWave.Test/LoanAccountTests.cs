@@ -96,6 +96,31 @@ namespace WealthWave.Test
             
         }
 
+        [Theory]
+        [InlineData(800, 12546, 12462.50, 12463)]
+        public void LoanAccount_DepositTransaction_DepositRequestedAmount(double testValue, double requestedLoan, double expectedOutput, double upperRangeOfOutput)
+        {
+            // Arrange varables, classes mocks
+            var userAccount = new LoanAccount();
+            string message;
+
+
+
+            // Act
+            userAccount.ApplyForLoan(requestedLoan, out message);
+            userAccount.WithdrawTransaction(requestedLoan, out message); // Must withdraw loan before paying it off
+            userAccount.DepositTransaction(testValue, out message);
+            var result = userAccount.LoanAmount;
+
+
+            // Assert 
+            result.Should().NotBe(null);
+            // Counts for floating point discrepancy
+            result.Should().BeInRange(expectedOutput, upperRangeOfOutput);
+            result.Should().BePositive();
+
+        }
+
 
     }
 }

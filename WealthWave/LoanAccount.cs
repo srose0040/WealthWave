@@ -228,7 +228,7 @@ namespace WealthWave
                     LoanAmount -= newDepositAmount; // Updating loan amount
                     InterestCalculation();
                 }
-                else // they are trying to overfill the account
+                else // they are trying to overfill the account THIS WILL ALSO BE CALLED IF THE USER DOES NOT WITHDRAW THEIR LOAN FIRST
                 {
                     message += "You cannot deposit more than the account will allow. This is a Loan Account, not a Savings Account";
                     message += string.Format("The most you can deposit is {0:C}\n", LoanAmount);
