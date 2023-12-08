@@ -188,7 +188,7 @@ namespace WealthWave
         * Parameters:  Void.
         * Returns:     Void.
         */
-        private string DebtCollector()
+        public string DebtCollector()
         {
             string message = string.Empty;
             if (LoanAmount > Constants.kZero) // if the user owe the bank

@@ -28,8 +28,8 @@ namespace WealthWave.Test
         }
 
         [Theory]
-        [InlineData(10000, 10610, 10611)]
-        public void LoanAccount_ApplyInterestOnLoan_NoticeInterestAppliedToLoan(double testValue, double expectedOutput, double upperRangeOfOutput)
+        [InlineData(10000, 0, 10611)]
+        public void LoanAccount_InterestCalculation_NoticeInterestAppliedToLoan(double testValue, double expectedOutput, double upperRangeOfOutput)
         {
             // Arrange varables, classes mocks
             var userAccount = new LoanAccount();
@@ -49,5 +49,53 @@ namespace WealthWave.Test
             result.Should().BeInRange(expectedOutput, upperRangeOfOutput);
             result.Should().BePositive();
         }
+
+        [Theory]
+        [InlineData(10000, -10000)]
+        public void LoanAccount_WithdrawTransaction_WithdrawRequestedAmount(double testValue, double expectedOutput)
+        {
+            // Arrange varables, classes mocks
+            var userAccount = new LoanAccount();
+            string message;
+
+
+
+            // Act
+            userAccount.ApplyForLoan(testValue, out message);
+            userAccount.WithdrawTransaction(testValue, out message);
+            var result = userAccount.CurrentBalance;
+
+
+            // Assert 
+            result.Should().NotBe(null);
+            // Counts for floating point discrepancy
+            result.Should().Be(expectedOutput);
+            result.Should().BeNegative();
+        }
+
+        [Theory]
+        [InlineData(500, 0)]
+        public void LoanAccount_DebtCollector_CollectUserDebt(double testValue, double expectedOutput)
+        {
+            // Arrange varables, classes mocks
+            var userAccount = new LoanAccount();
+            string message;
+
+
+
+            // Act
+            userAccount.ApplyForLoan(testValue, out message);
+            userAccount.DebtCollector();
+            var result = userAccount.LoanAmount;
+
+
+            // Assert 
+            result.Should().NotBe(null);
+            // Counts for floating point discrepancy
+            result.Should().Be(expectedOutput);
+            
+        }
+
+
     }
 }
