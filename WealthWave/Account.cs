@@ -173,15 +173,16 @@ namespace WealthWave
         * Parameters:  double newDepositAmount: The suggested amount to deposit
         * Returns:     Void.
         */
-        public virtual void DepositTransaction(double newDepositAmount)
+        public virtual void DepositTransaction(double newDepositAmount, out string message)
         {
+            message = string.Empty;
             if (newDepositAmount > Constants.kZero) // if the deposit amount is greater than $0
             {
                 CurrentBalance += newDepositAmount; // Adding the deposit amount to the current balance
             }
             else
             {
-                throw new ArgumentException("Please deposit a positive amount... \n"); // This error message is because it is impossible to deposit a negative amount into an account
+                message = "Please deposit a positive amount... \n"; // This error message is because it is impossible to deposit a negative amount into an account
             }
         }
 

@@ -155,16 +155,16 @@ namespace WealthWave
         * Parameters:  double newWithdrawAmount: The suggested amount to deposit
         * Returns:     Void.
         */
-        public override void WithdrawTransaction(double newWithdrawAmount)
+        public override void WithdrawTransaction(double newWithdrawAmount, out string message)
         {
-
+            message = string.Empty;
             if (newWithdrawAmount > Constants.kZero) // if they want to withdraw a positive #
             {
                 double calculatedBalanceAfterPotentialWithdrawl = (CurrentBalance - newWithdrawAmount);
                 if (calculatedBalanceAfterPotentialWithdrawl < (ChangeSignOfNumber(LoanAmount)))
                 {
                     // If the account balance is now going to be less than $0
-                    Console.WriteLine("You cannot withdraw more than the loan approved you for.\n");
+                    message = "You cannot withdraw more than the loan approved you for.\n";
                 }
                 else if (newWithdrawAmount == LoanAmount) // if they are withdrawing a valid amount
                 {
@@ -172,12 +172,12 @@ namespace WealthWave
                 }
                 else
                 { // if they dont want to withdraw enough
-                    Console.WriteLine("Please withdraw the full amount of the requested loan {0:C}\n", LoanAmount);
+                    message = string.Format("Please withdraw the full amount of the requested loan {0:C}\n", LoanAmount.ToString());
                 }
             }
             else
             {
-                Console.WriteLine("Please withdraw a positive amount... \n");
+                message = "Please withdraw a positive amount... \n";
                 // This error message is because it is impossible to withdraw a negative amount into an account in the terms of this program you must withdraw a positive double
             }
         }
@@ -188,15 +188,16 @@ namespace WealthWave
         * Parameters:  Void.
         * Returns:     Void.
         */
-        private void DebtCollector()
+        private string DebtCollector()
         {
+            string message = string.Empty;
             if (LoanAmount > Constants.kZero) // if the user owe the bank
             {
                 CurrentBalance = Math.Round(CurrentBalance);
                 LoanAmount = Math.Round(LoanAmount); // Rounding these to make them easier
                 const int kReposessionValue = 1; // So we can steal the users money
-                Console.WriteLine("You have failed to repay the loan back in time. Your account is now in collections.");
-                Console.WriteLine("The Loan Amount of {0:C} will now be retrived and the account will be settled.\n", LoanAmount);
+                message += "You have failed to repay the loan back in time. Your account is now in collections.";
+                message += string.Format("The Loan Amount of {0:C} will now be retrived and the account will be settled.\n", LoanAmount);
                 for (int counter = Constants.kZero; LoanAmount > Constants.kZero; counter++)
                 {
                     CurrentBalance += kReposessionValue;
@@ -204,6 +205,7 @@ namespace WealthWave
                     // Fairly re-assigning the money back to the bank  
                 }
             }
+            return message;
         }
 
 
@@ -214,8 +216,9 @@ namespace WealthWave
         * Parameters:  double newDepositAmount: The suggested amount to deposit
         * Returns:     Void.
         */
-        public override void DepositTransaction(double newDepositAmount) // This is to pay off the loan so maybe the account balance should decrease
+        public override void DepositTransaction(double newDepositAmount, out string message) // This is to pay off the loan so maybe the account balance should decrease
         {
+            message = string.Empty;
             int deferredPaymentsLast = DeferredPayments; // Storing amount of deferred payments
             if (newDepositAmount > Constants.kZero) // if they want to deposit a positive amount
             {
@@ -227,8 +230,8 @@ namespace WealthWave
                 }
                 else // they are trying to overfill the account
                 {
-                    Console.WriteLine("You cannot deposit more than the account will allow. This is a Loan Account, not a Savings Account");
-                    Console.WriteLine("The most you can deposit is {0:C}\n", LoanAmount);
+                    message += "You cannot deposit more than the account will allow. This is a Loan Account, not a Savings Account";
+                    message += string.Format("The most you can deposit is {0:C}\n", LoanAmount);
                 }
 
                 if (DeferredPayments == Constants.kMaxDeferredPayments) // Being fair and giving user 6 chances to pay balance in full
@@ -240,7 +243,7 @@ namespace WealthWave
             }
             else
             {
-                Console.WriteLine("Please deposit a positive amount... \n"); // This error message is because it is impossible to deposit a negative amount into an account
+                message += ("Please deposit a positive amount... \n"); // This error message is because it is impossible to deposit a negative amount into an account
             }
             if (deferredPaymentsLast == Constants.kMaxDeferredPayments)
             {
