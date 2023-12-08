@@ -191,8 +191,9 @@ namespace WealthWave
         * Parameters:  double newWithdrawAmount: The suggested amount to deposit
         * Returns:     Void.
         */
-        public virtual void WithdrawTransaction(double newWithdrawAmount)
+        public virtual void WithdrawTransaction(double newWithdrawAmount, out string message)
         {
+            message = string.Empty;
             const double kEpsilon = -0.00404; // This is to know if the values are equal or not due to floating point inaccuracy
             double floatingPointComparator = CurrentBalance - newWithdrawAmount; // This is to compare to the epsilon
 
@@ -217,7 +218,7 @@ namespace WealthWave
             }
             else
             {
-                throw new ArgumentException("Please withdraw a positive amount... \n");
+                message = "Please withdraw a positive amount... \n";
                 // This error message is because it is impossible to withdraw a negative amount into an account in the terms of this program you must withdraw a positive double
             }
         }

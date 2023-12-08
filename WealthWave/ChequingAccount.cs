@@ -87,8 +87,9 @@ namespace WealthWave
         * Parameters:  double newWithdrawAmount: The suggested amount to deposit
         * Returns:     Void.
         */
-        public override void WithdrawTransaction(double newWithdrawAmount)
+        public override void WithdrawTransaction(double newWithdrawAmount, out string message)
         {
+            message = string.Empty;
             const double kEpsilon = -0.00404; // This is to know if the values are equal or not due to floating point inaccuracy
             double floatingPointComparator = CurrentBalance - newWithdrawAmount; // This is to compare to the epsilon
 
@@ -101,8 +102,8 @@ namespace WealthWave
                         if (QuartersOfTheYear == Constants.kMaxQuartersOfYear) // if a "Year" has gone by
                         {
                             ApplyAnnualFee();
-                            Console.WriteLine("The Annual fee has just been applied. If your account balance is negative please restore it to good standings.\n");
                             QuartersOfTheYear = Constants.kZero; // reset the year calendar
+                            message = "The Annual fee has just been applied. If your account balance is negative please restore it to good standings.\n";
                         }
 
                         CurrentBalance -= newWithdrawAmount; // Subtracting the withdraw amount to the current balance
@@ -120,8 +121,8 @@ namespace WealthWave
                     if (QuartersOfTheYear == Constants.kMaxQuartersOfYear) // if a "Year" has gone by
                     {
                         ApplyAnnualFee(); // Bank needs to get PAID!!!
-                        Console.WriteLine("The Annual fee has just been applied. If your account balance is negative please restore it to good standings.\n");
                         QuartersOfTheYear = Constants.kZero; // reset the year calendar
+                        message = "The Annual fee has just been applied. If your account balance is negative please restore it to good standings.\n"; 
                     }
 
                     CurrentBalance -= newWithdrawAmount; // Subtracting the withdraw amount to the current balance
@@ -130,7 +131,7 @@ namespace WealthWave
             }
             else
             {
-                Console.WriteLine("Please withdraw a positive amount... \n");
+                message = "Please withdraw a positive amount... \n";
                 // This error message is because it is impossible to withdraw a negative amount into an account in the terms of this program you must withdraw a positive double
             }
         }
