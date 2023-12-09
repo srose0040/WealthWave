@@ -18,8 +18,9 @@
 <div class="form-group text-center">
     <p>
         <!--This must need to redirect users to passwrd and regsr pages-->
-        <a NavigateUrl="~/Error.aspx">Forgot Password?</a> |
-        <a NavigateUrl="~/RegisterationForm.aspx" asp-route-registerClicked="True">Register</a>
+        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Error.aspx" Text="Forgot Password?" runat="server" />
+        <asp:HyperLink ID="HyperLink2" NavigateUrl="~/RegisterationForm.aspx" Text="Register" runat="server" />
+
     </p>
 </div>
 </asp:Content>
