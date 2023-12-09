@@ -32,6 +32,7 @@ namespace BankApplication1
                 // GET ALL INFO FROM THE TEXTBOX THEN 
                 // CONNECT TO DATABASE AND UPDATE CREDENTIALS
                 // Redirect to the next page 
+                registerUser(); // Adds user to SQL Database
                 Response.Redirect("HomePage.aspx");
             }
 
@@ -47,6 +48,9 @@ namespace BankApplication1
             conn.Open();
 
             querystr = "";
+            // INPUT VALIDATION MUST BE DONE TO PREVENT SQL INJECTION
+            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber)" +
+                "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "')";
 
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
