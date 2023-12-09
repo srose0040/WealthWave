@@ -16,10 +16,39 @@ namespace BankApplication1
 
         protected void RegisterButton_Click(object sender, EventArgs e)
         {
+            string dateOfBirth = DateOfBirth.Text;
+            if (!IsValidDate(dateOfBirth))
+            {
+                
+                // display an error message to the user
+                Response.Write("<script>alert('You must be born before January 1st, 2009 to register for a bank account.');</script>");
+            }
+
+
             // GET ALL INFO FROM THE TEXTBOX THEN 
             // CONNECT TO DATABASE AND UPDATE CREDENTIALS
             // Redirect to the next page 
             Response.Redirect("HomePage.aspx");
         }
+
+
+
+        public bool IsValidDate(string dateString)
+        {
+            DateTime tempDate;
+            bool isDate = DateTime.TryParse(dateString, out tempDate);
+
+            if (isDate)
+            {
+                DateTime cutOffDate = new DateTime(2009, 1, 1); // January 1 2009
+                return tempDate < cutOffDate;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
     }
 }
