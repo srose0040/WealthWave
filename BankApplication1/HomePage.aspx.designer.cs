@@ -11,7 +11,7 @@ namespace BankApplication1
 {
 
 
-    public partial class LogInPage
+    public partial class HomePage
     {
     }
 }

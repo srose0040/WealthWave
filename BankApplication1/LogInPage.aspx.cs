@@ -13,5 +13,13 @@ namespace BankApplication1
         {
 
         }
+
+        protected void SubmitButton_Click(object sender, EventArgs e)
+        {
+            // VALIDATE DATABASE CREDENTIALS
+            // Redirect to the next page 
+            Response.Redirect("HomePage.aspx");
+        }
+
     }
 }
