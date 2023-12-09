@@ -9,6 +9,10 @@ namespace BankApplication1
 {
     public partial class RegistrationForm : System.Web.UI.Page
     {
+        MySql.Data.MySqlClient.MySqlConnection conn;
+        MySql.Data.MySqlClient.MySqlCommand cmd;
+        String querystr;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -32,6 +36,23 @@ namespace BankApplication1
             }
 
             
+        }
+
+        private void registerUser()
+        {
+            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+
+            conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
+
+            conn.Open();
+
+            querystr = "";
+
+            cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
+
+            cmd.ExecuteReader();
+
+            conn.Close();
         }
 
 
