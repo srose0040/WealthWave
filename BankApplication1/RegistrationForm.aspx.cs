@@ -23,12 +23,15 @@ namespace BankApplication1
                 // display an error message to the user
                 Response.Write("<script>alert('You must be born before January 1st, 2009 to register for a bank account.');</script>");
             }
+            else
+            {
+                // GET ALL INFO FROM THE TEXTBOX THEN 
+                // CONNECT TO DATABASE AND UPDATE CREDENTIALS
+                // Redirect to the next page 
+                Response.Redirect("HomePage.aspx");
+            }
 
-
-            // GET ALL INFO FROM THE TEXTBOX THEN 
-            // CONNECT TO DATABASE AND UPDATE CREDENTIALS
-            // Redirect to the next page 
-            Response.Redirect("HomePage.aspx");
+            
         }
 
 
@@ -41,7 +44,16 @@ namespace BankApplication1
             if (isDate)
             {
                 DateTime cutOffDate = new DateTime(2009, 1, 1); // January 1 2009
-                return tempDate < cutOffDate;
+                if (tempDate > cutOffDate)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+               // return tempDate < cutOffDate;
             }
             else
             {
