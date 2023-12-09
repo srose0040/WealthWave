@@ -6,32 +6,32 @@
     <div>
         <h3>(WE WILL CHANGE THIS BY USER NAME)Dashboard</h3>
         <p>User Account Number: @Model.ViewModel.UserAccountNumber</p>
-     </div>
-<div class="bodyTitles">
-    <p>Choose an account type:</p>
-    <ul>
-        <li><a asp-page="/SavingAccount">Savings Account</a></li>
-        <li><a asp-page="/CheckingAccount">Checking Account</a></li>
-        <li><a asp-page="/LoanAccount">Loan Account</a></li>
-    </ul>
-</div>
-
-
-    <!--Additional options for users-->
-<div class ="bodyTitles">
-        <h3>Additional Options</h3>
+    </div>
+    <div class="bodyTitles">
+        <p>Choose an account type:</p>
         <ul>
-        <li><a asp-page="/SettingAndPrivacy">Setting and Privacy</a></li>
-        <li><a asp-page="/ContactSupport">Contact and Support</a></li>
+            <li><asp:HyperLink NavigateUrl="/SavingAccount" Text="Savings Account" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="/CheckingAccount" Text="Checking Account" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="/LoanAccount" Text="Loan Account" runat="server" /></li>
         </ul>
     </div>
-<div class="bodyTitles" style="position: fixed; top: 300px; right: 100px;">
-    <ul>
-        <li><a asp-page="/Index">Home</a></li>
-        <li><a asp-page="/AccountDetails">Account</a></li>
-        <li><a asp-page="TransactionsHistory">Transaction</a></li>
-        <li><a asp-page="/Deposit">Deposit</a></li>
-        <li><a asp-page="/SavingAccount">Savings</a></li>
-    </ul>
-</div>
+    
+    
+    <!--Additional options for users-->
+    <div class ="bodyTitles">
+        <h3>Additional Options</h3>
+        <ul>
+            <li><asp:HyperLink NavigateUrl="/SettingAndPrivacy" Text="Setting and Privacy" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="/ContactSupport" Text="Contact and Support" runat="server" /></li>
+        </ul>
+    </div>
+    <div class="bodyTitles" style="position: fixed; top: 300px; right: 100px;">
+        <ul>
+            <li><asp:HyperLink NavigateUrl="/Index" Text="Home" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="/AccountDetails" Text="Account" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="TransactionsHistory" Text="Transaction" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="/Deposit" Text="Deposit" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="/SavingAccount" Text="Savings" runat="server" /></li>
+        </ul>
+    </div>
 </asp:Content>
