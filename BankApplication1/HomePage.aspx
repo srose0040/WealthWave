@@ -10,9 +10,9 @@
     <div class="bodyTitles">
         <p>Choose an account type:</p>
         <ul>
-            <li><asp:HyperLink NavigateUrl="/SavingAccount" Text="Savings Account" runat="server" /></li>
-            <li><asp:HyperLink NavigateUrl="/CheckingAccount" Text="Checking Account" runat="server" /></li>
-            <li><asp:HyperLink NavigateUrl="/LoanAccount" Text="Loan Account" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="SavingAccount.aspx" Text="Savings Account" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="CheckingAccount.aspx" Text="Checking Account" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="LoanAccount.aspx" Text="Loan Account" runat="server" /></li>
         </ul>
     </div>
     
@@ -21,17 +21,17 @@
     <div class ="bodyTitles">
         <h3>Additional Options</h3>
         <ul>
-            <li><asp:HyperLink NavigateUrl="/SettingAndPrivacy" Text="Setting and Privacy" runat="server" /></li>
-            <li><asp:HyperLink NavigateUrl="/ContactSupport" Text="Contact and Support" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="SettingAndPrivacy.aspx" Text="Setting and Privacy" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="ContactSupport.aspx" Text="Contact and Support" runat="server" /></li>
         </ul>
     </div>
     <div class="bodyTitles" style="position: fixed; top: 300px; right: 100px;">
         <ul>
-            <li><asp:HyperLink NavigateUrl="/Index" Text="Home" runat="server" /></li>
-            <li><asp:HyperLink NavigateUrl="/AccountDetails" Text="Account" runat="server" /></li>
-            <li><asp:HyperLink NavigateUrl="TransactionsHistory" Text="Transaction" runat="server" /></li>
-            <li><asp:HyperLink NavigateUrl="/Deposit" Text="Deposit" runat="server" /></li>
-            <li><asp:HyperLink NavigateUrl="/SavingAccount" Text="Savings" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="StartPage.aspx" Text="Home" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="AccountDetails.aspx" Text="Account" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="TransactionsHistory.aspx" Text="Transaction" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="Deposit.aspx" Text="Deposit" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="SavingAccount.aspx" Text="Savings" runat="server" /></li>
         </ul>
     </div>
 </asp:Content>
