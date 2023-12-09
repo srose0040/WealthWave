@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - WealthWave Bank</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -14,6 +14,121 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+      <style>
+      /* styles go here */
+      body {
+          font-family: 'Times New Roman', Times, serif, sans-serif;
+          font-weight: bold;
+          margin: 0;
+          padding: 0;
+          background-color: aqua;
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+          margin-left: 20px;
+      }
+
+      .header, .footer {
+          background-color: darkblue; /* Blue background color */
+          color: #ffffff; /* White text color */
+          text-align: center;
+          padding: 10px;
+      }
+
+      .footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+      }
+
+      .content {
+          padding: 20px;
+          background-color: aqua;
+      }
+
+      .search-bar {
+          margin-right: auto; /* Push the search bar to the left */
+          text-align: right;
+      }
+
+      #main-content {
+          margin-left: 20px;
+      }
+
+      .submitButtons {
+          width: auto;
+          margin-top: 30px;
+          font-family: 'Times New Roman', Times, serif;
+          font-weight: bold;
+          font-size: 16px;
+          color: white;
+          background-color: darkblue; /* Set the button background color */
+          border: none; /*the button border  */
+          padding: 10px 20px;
+      }
+
+      .headerTitles {
+          font-family: 'Times New Roman', Times, serif;
+          font-weight: bold;
+          font-size: 22px;
+          color: white;
+      }
+
+      .bodyTitles 
+      {
+          font-family: 'Times New Roman', Times, serif;
+          font-weight: bold;
+          font-size: 22px;
+          color: black;
+      }
+
+      #username, #password 
+      {
+          width: 550px; /*  width for the user and pss boxes*/
+      }
+
+      /* Additional styling for the input boxes  */
+      .form-group 
+      {
+          margin-bottom: 15px;
+      }
+
+      .main-header 
+      {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          background-color: #007BFF; /* Blue background color */
+          color: #ffffff; /* White text color */
+      }
+
+      .main-navigation ul 
+      {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+      }
+
+      .main-navigation li 
+      {
+          margin: 0 10px;
+      }
+
+      .main-navigation .left 
+      {
+          margin-right: auto; /* Push items to the left */
+      }
+
+      .accordion-body ul 
+      {
+          padding: 0;
+          margin: 130px 100px 110px 110px;
+          float: right;
+      }
+  </style>
 
 </head>
 <body>
@@ -39,7 +154,7 @@
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                <a class="navbar-brand" runat="server" href="~/">WealthWave Bank</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -58,7 +173,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - WealthWave Bank</p>
             </footer>
         </div>
     </form>

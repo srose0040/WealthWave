@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BankApplication1
 {
-    public partial class _Default : Page
+    public partial class LogInPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
