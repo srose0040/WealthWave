@@ -2,7 +2,7 @@
 
 
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <h3>(WE WILL CHANGE THIS BY USER NAME)Dashboard</h3>
         <p>User Account Number: @Model.ViewModel.UserAccountNumber</p>

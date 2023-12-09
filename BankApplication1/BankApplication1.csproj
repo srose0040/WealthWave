@@ -123,6 +123,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="HomePage.aspx" />
     <Content Include="LogInPage.aspx" />
+    <Content Include="RegistrationForm.aspx" />
     <Content Include="StartPage.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -217,6 +218,13 @@
     </Compile>
     <Compile Include="LogInPage.aspx.designer.cs">
       <DependentUpon>LogInPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrationForm.aspx.cs">
+      <DependentUpon>RegistrationForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrationForm.aspx.designer.cs">
+      <DependentUpon>RegistrationForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="StartPage.aspx.cs">
       <DependentUpon>StartPage.aspx</DependentUpon>
