@@ -10,9 +10,9 @@ namespace BankApplication1
 {
     public partial class RegistrationForm : System.Web.UI.Page
     {
-        MySql.Data.MySqlClient.MySqlConnection conn;
-        MySql.Data.MySqlClient.MySqlCommand cmd;
-        String querystr;
+        //MySql.Data.MySqlClient.MySqlConnection conn;
+        //MySql.Data.MySqlClient.MySqlCommand cmd;
+        //String querystr;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,47 +30,54 @@ namespace BankApplication1
             }
 
 
-            if (string.IsNullOrEmpty(firstName.Text.Trim()))
+            if (string.IsNullOrEmpty(firstName.Text) || firstName.Text.Length > 25 || firstName.Text.Length <=0)
             {
-                ShowErrorMessage.Text = "First Name is required.";
+                ShowErrorMessage.Text = "First Name should be 1 to 25 character length.";
                 return;
             }
 
-            if (string.IsNullOrEmpty(lastName.Text.Trim()))
+            if (string.IsNullOrEmpty(lastName.Text) || lastName.Text.Length > 25|| lastName.Text.Length <= 0)
             {
-                ShowErrorMessage.Text = "Last Name is required.";
+                ShowErrorMessage.Text = "Last Name should be 1 to 25 character length.";
                 return;
             }
 
-            if (string.IsNullOrEmpty(email.Text.Trim()))
+            if (string.IsNullOrEmpty(email.Text) || email.Text.Length > 25 || email.Text.Length <= 0)
             {
-                ShowErrorMessage.Text = "Email is required.";
+                ShowErrorMessage.Text = "Please specify 25 character legth of valid email address";
                 return;
             }
 
-            // validation for email format
-            if (!IsValidEmail(email.Text.Trim()))
+            //// validation for email format
+            //if (!IsValidEmail(email.Text.Trim()))
+            //{
+            //    ShowErrorMessage.Text = "Invalid Email Address.";
+            //    return;
+            //}
+
+            if (string.IsNullOrEmpty(phone.Text) || phone.Text.Length > 15 || phone.Text.Length <= 0)
             {
-                ShowErrorMessage.Text = "Invalid Email Address.";
+                ShowErrorMessage.Text = "Invalid phone character length";
                 return;
             }
 
-            if (string.IsNullOrEmpty(phone.Text.Trim()))
-            {
-                ShowErrorMessage.Text = "Phone Number is required.";
-                return;
-            }
+            //IF WE EVER NEED THIS WE CAN UNCOMMENT IT 
+            //// Additional validation for phone number - digits only
+            //if (!IsDigitsOnly(phone.Text.Trim()))
+            //{
+            //    ShowErrorMessage.Text = "Phone Number must contain only digits.";
+            //    return;
+            //}
 
-            // Additional validation for phone number - digits only
-            if (!IsDigitsOnly(phone.Text.Trim()))
-            {
-                ShowErrorMessage.Text = "Phone Number must contain only digits.";
-                return;
-            }
+            //if (string.IsNullOrEmpty(sinNumber.Text.Trim()))
+            //{
+            //    ShowErrorMessage.Text = "SinNumber is required.";
+            //    return;
+            //}
 
-            if (string.IsNullOrEmpty(sinNumber.Text.Trim()))
+            if (string.IsNullOrEmpty(sinNumber.Text) || sinNumber.Text.Length > 10 || phone.Text.Length <= 0)
             {
-                ShowErrorMessage.Text = "SinNumber is required.";
+                ShowErrorMessage.Text = "Invalid sin Number length";
                 return;
             }
 
@@ -94,22 +101,22 @@ namespace BankApplication1
 
         private void registerUser() // This method connects to SQL database and puts users info in the Customer table
         {
-            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+            //String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
 
-            conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
+            //conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
 
-            conn.Open();
+            //conn.Open();
 
-            querystr = "";
-            // INPUT VALIDATION MUST BE DONE TO PREVENT SQL INJECTION
-            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password)" +
-                "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + password.Text + "')";
+            //querystr = "";
+            //// INPUT VALIDATION MUST BE DONE TO PREVENT SQL INJECTION
+            //querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password)" +
+            //    "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + password.Text + "')";
 
-            cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
+            //cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
-            cmd.ExecuteReader();
+            //cmd.ExecuteReader();
 
-            conn.Close();
+            //conn.Close();
         }
 
 
