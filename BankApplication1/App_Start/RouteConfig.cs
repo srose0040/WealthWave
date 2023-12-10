@@ -13,6 +13,12 @@ namespace BankApplication1
             var settings = new FriendlyUrlSettings();
             settings.AutoRedirectMode = RedirectMode.Permanent;
             routes.EnableFriendlyUrls(settings);
+            // Defining  a specific default route
+            routes.MapPageRoute(
+                "_Default",
+                "",
+                "~/StartPage.aspx"
+            );
         }
     }
 }
