@@ -3,7 +3,8 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <div>
+    <div class="form-group "  style="margin-top: 100px; margin-bottom: 100px;">
+
         <h3>(WE WILL CHANGE THIS BY USER NAME)Dashboard</h3>
         <p>User Account Number: @Model.ViewModel.UserAccountNumber</p>
     </div>
@@ -31,6 +32,7 @@
             <li><asp:HyperLink NavigateUrl="AccountDetails.aspx" Text="Account" runat="server" /></li>
             <li><asp:HyperLink NavigateUrl="TransactionsHistory.aspx" Text="Transaction" runat="server" /></li>
             <li><asp:HyperLink NavigateUrl="Deposit.aspx" Text="Deposit" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="Withdraw.aspx" Text="Withdraw" runat="server" /></li>
             <li><asp:HyperLink NavigateUrl="SavingAccount.aspx" Text="Savings" runat="server" /></li>
         </ul>
     </div>
