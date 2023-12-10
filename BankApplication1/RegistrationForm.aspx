@@ -106,10 +106,11 @@
             </div>
         </div>
         
-        <!-- Terms and Conditions -->
-       <div class="form-group" style="margin-bottom: 10px; margin-top: 10px;">
+       <!-- Terms and Conditions -->
+        <div class="form-group" style="margin-bottom: 10px; margin-top: 10px;">
             <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required />
-            <label for="agreeToTerms">I agree to the terms and conditions    WE MUST NEED  USER AGGREEMENT PAPER </label>
+            <label for="agreeToTerms">I agree to the terms and conditions</label>
+            <a href="TermsAndConditions.aspx" target="_blank" id="TermsAndConditions">Terms and Conditions</a>
         </div>
         
         <!-- Submit Button -->
