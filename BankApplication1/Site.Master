@@ -121,6 +121,19 @@
               width: 100%;
               text-align: center;
           }
+          .form-group-labels 
+          {
+              list-style-type: none; /* Remove bullets */
+              margin: 0;
+              padding: 0;
+              text-align: left; /* Adjust text alignment as needed */
+          }
+
+              .form-group-labels li 
+              {
+                  margin-bottom: 10px; /* Adjust spacing between labels as needed */
+                  list-style-type: square; /* Use a square bullet */
+              }
         </style>
 </head>
 <body>

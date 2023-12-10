@@ -11,7 +11,7 @@ namespace BankApplication1
 {
 
 
-    public partial class LoanAccount
+    public partial class ChequingAccount
     {
 
         /// <summary>
