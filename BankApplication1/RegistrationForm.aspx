@@ -54,6 +54,16 @@
         <asp:TextBox ID="sinNumber" runat="server" CssClass="form-control" />
     </div>
 
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <asp:TextBox ID="username" runat="server" CssClass="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <asp:TextBox ID="password" runat="server" TextMode="Password" CssClass="form-control" />
+    </div>
+
     
     
     
