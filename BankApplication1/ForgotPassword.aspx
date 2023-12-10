@@ -4,6 +4,8 @@
 
     <%-- CREATE HTML TO HANDLE THEM FORGETTING PASSWORD OR REMOVE THIS PAGE --%>
     <!-- Submit Button -->
-<asp:Button Text="Change Password" runat="server" class="btn btn-primary" style="background-color: darkblue; font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 16px; color: white;" OnClick="PasswordButton_Click" />
+    <div class="form-group "  style="margin-top: 100px;">
+        <asp:Button Text="Change Password" runat="server" class="btn btn-primary" style="background-color: darkblue; font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 16px; color: white;" OnClick="PasswordButton_Click" />
 
+    </div>
 </asp:Content>

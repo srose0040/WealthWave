@@ -16,8 +16,6 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
       <style>
-      /* styles go here */
-          <style >
           /* styles go here */
           body 
           {
@@ -25,7 +23,7 @@
               font-weight: bold;
               margin: 0;
               padding: 0;
-              background-color: lightskyblue;
+              background-color:lightblue;
           }
 
           .container.body-content 
@@ -40,6 +38,7 @@
           h3 
           {
               color: darkblue;
+              font-weight:bolder;
           }
           h6 
           {

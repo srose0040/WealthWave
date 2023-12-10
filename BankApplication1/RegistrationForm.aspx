@@ -1,5 +1,12 @@
 ﻿<%@ Page Language="C#" Title="Registration" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrationForm.aspx.cs" Inherits="BankApplication1.RegistrationForm" %>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
+
+
+
+<div class="form-group "  style="margin-top: 100px;">
+    <h3>WealthWave Bank Registration Form</h3>
+
+</div>
     <div class="container">
         <!-- User Information -->
         <div class="row">
@@ -102,12 +109,18 @@
         <!-- Terms and Conditions -->
        <div class="form-group" style="margin-bottom: 50px; margin-top: 50px;">
             <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required />
-            <label for="agreeToTerms">I agree to the terms and conditions</label>
+            <label for="agreeToTerms">I agree to the terms and conditions    WE MUST NEED TO HAVE ADOBE FORM OF USER AGGREEMENT PAPER SO WE CAN LIN IT HERE THEN USER CAN READ AND AGREE ON IT</label>
         </div>
         
         <!-- Submit Button -->
         <div class="form-group" style="margin-top: 50px;">
             <asp:Button Text="Register" runat="server" class="btn btn-primary" style="background-color: darkblue; font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 16px; color: white;" OnClick="RegisterButton_Click" />
+        </div>
+
+        <!--lbel for Error message-->
+        <div>
+            <asp:Label ID="ShowErrorMessage" runat="server" ForeColor="Red" Text=""></asp:Label>
+
         </div>
 
     </div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -26,6 +27,58 @@ namespace BankApplication1
                 
                 // display an error message to the user
                 Response.Write("<script>alert('You must be born before January 1st, 2009 to register for a bank account.');</script>");
+            }
+
+
+            if (string.IsNullOrEmpty(firstName.Text.Trim()))
+            {
+                ShowErrorMessage.Text = "First Name is required.";
+                return;
+            }
+
+            if (string.IsNullOrEmpty(lastName.Text.Trim()))
+            {
+                ShowErrorMessage.Text = "Last Name is required.";
+                return;
+            }
+
+            if (string.IsNullOrEmpty(email.Text.Trim()))
+            {
+                ShowErrorMessage.Text = "Email is required.";
+                return;
+            }
+
+            // validation for email format
+            if (!IsValidEmail(email.Text.Trim()))
+            {
+                ShowErrorMessage.Text = "Invalid Email Address.";
+                return;
+            }
+
+            if (string.IsNullOrEmpty(phone.Text.Trim()))
+            {
+                ShowErrorMessage.Text = "Phone Number is required.";
+                return;
+            }
+
+            // Additional validation for phone number - digits only
+            if (!IsDigitsOnly(phone.Text.Trim()))
+            {
+                ShowErrorMessage.Text = "Phone Number must contain only digits.";
+                return;
+            }
+
+            if (string.IsNullOrEmpty(sinNumber.Text.Trim()))
+            {
+                ShowErrorMessage.Text = "SinNumber is required.";
+                return;
+            }
+
+            // Additional validation for SIN number - digits only
+            if (!IsDigitsOnly(sinNumber.Text.Trim()))
+            {
+                ShowErrorMessage.Text = "SinNumber must contain only digits.";
+                return;
             }
             else
             {
@@ -85,6 +138,20 @@ namespace BankApplication1
                 return false;
             }
         }
+
+        private bool IsDigitsOnly(string str)
+        {
+            // Check if a string contains only digits
+            return !string.IsNullOrEmpty(str) && str.All(char.IsDigit);
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            //NOT SURE ABOUT THIS I FOUND IT ON STACK
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, pattern);
+        }
+
 
 
     }
