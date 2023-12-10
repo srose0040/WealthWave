@@ -99,7 +99,7 @@ namespace WealthWave
         public double CurrentBalance
         {
             get { return currentBalance; }
-            protected set { currentBalance = value; }
+            set { currentBalance = value; }
         }
 
         /*

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace BankApplication1
 {
@@ -12,6 +14,7 @@ namespace BankApplication1
     {
         MySql.Data.MySqlClient.MySqlConnection conn;
         MySql.Data.MySqlClient.MySqlCommand cmd;
+        MySql.Data.MySqlClient.MySqlDataReader reader;
         String querystr;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -94,6 +97,8 @@ namespace BankApplication1
 
         private void registerUser() // This method connects to SQL database and puts users info in the Customer table
         {
+            double defaultBalance = 0.0;
+
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
 
             conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
@@ -102,12 +107,25 @@ namespace BankApplication1
 
             querystr = "";
             // INPUT VALIDATION MUST BE DONE TO PREVENT SQL INJECTION
-            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password)" +
-                "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + password.Text + "')";
+            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password, CurrentBalance)" +
+                "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + password.Text + "','" + defaultBalance + "')";
 
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
+
             cmd.ExecuteReader();
+
+            querystr = "";
+            querystr = "SELECT CustomerId FROM bankapplication.customer WHERE username='" + username.Text + "' AND password='" + password.Text + "'";
+            cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
+
+            reader = cmd.ExecuteReader();
+            while (reader.HasRows & reader.Read())
+            {
+                int customerId = reader.GetInt32(reader.GetOrdinal("CustomerID"));
+                Session["CustomerId"] = customerId;
+
+            }
 
             conn.Close();
         }
@@ -147,7 +165,7 @@ namespace BankApplication1
 
         private bool IsValidEmail(string email)
         {
-            //NOT SURE ABOUT THIS I FOUND IT ON STACK
+            
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
         }

@@ -28,19 +28,22 @@ namespace BankApplication1
             conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
             conn.Open();
             querystr = "";
-            querystr = "SELECT * FROM bankapplication.customer WHERE username='" + username.Text + "' AND password='" + password.Text + "'";
+            querystr = "SELECT CustomerId FROM bankapplication.customer WHERE username='" + username.Text + "' AND password='" + password.Text + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
             reader = cmd.ExecuteReader();
             name = "";
             while (reader.HasRows & reader.Read())
             {
-                name += reader.GetString(reader.GetOrdinal("FirstName")) + " " + reader.GetString(reader.GetOrdinal("LastName"));
+                int customerId = reader.GetInt32(reader.GetOrdinal("CustomerID"));
+                Session["CustomerId"] = customerId;
+
+                //name += reader.GetString(reader.GetOrdinal("FirstName")) + " " + reader.GetString(reader.GetOrdinal("LastName"));
             }
 
             if (reader.HasRows)
             {
-                Session["UserName"] = name;
+                //Session["UserName"] = name;
 
                 // VALIDATE DATABASE CREDENTIALS
                 // Redirect to the next page 

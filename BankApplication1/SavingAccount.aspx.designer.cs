@@ -11,7 +11,43 @@ namespace BankApplication1
 {
 
 
-    public partial class ForgotPassword
+    public partial class SavingAccount
     {
+
+        /// <summary>
+        /// amountTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox amountTextBox;
+
+        /// <summary>
+        /// balanceTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox balanceTextBox;
+
+        /// <summary>
+        /// depositRadioButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton depositRadioButton;
+
+        /// <summary>
+        /// withdrawRadioButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton withdrawRadioButton;
     }
 }

@@ -4,8 +4,8 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <h3>(WE WILL CHANGE THIS BY USER NAME)Dashboard</h3>
-        <p>User Account Number: @Model.ViewModel.UserAccountNumber</p>
+        <h3>Dashboard</h3>
+        <p>Account Number:  <%= Session["CustomerId"] %></p>
     </div>
     <div class="bodyTitles">
         <p>Choose an account type:</p>
