@@ -22,7 +22,7 @@
         <h3>Additional Options</h3>
         <ul>
             <li><asp:HyperLink NavigateUrl="SettingAndPrivacy.aspx" Text="Setting and Privacy" runat="server" /></li>
-            <li><asp:HyperLink NavigateUrl="ContactSupport.aspx" Text="Contact and Support" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="ContactAndSupport.aspx" Text="Contact and Support" runat="server" /></li>
         </ul>
     </div>
     <div class="bodyTitles" style="position: fixed; top: 300px; right: 100px;">
