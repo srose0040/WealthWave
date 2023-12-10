@@ -17,124 +17,118 @@
 
       <style>
       /* styles go here */
-      body {
-          font-family: 'Times New Roman', Times, serif, sans-serif;
-          font-weight: bold;
-          margin: 0;
-          padding: 0;
-          background-color: aqua;
-          display: flex;
-          flex-direction: column;
-          min-height: 100vh;
-          margin-left: 20px;
-      }
+          <style >
+          /* styles go here */
+          body 
+          {
+              font-family: 'Times New Roman', Times, serif, sans-serif;
+              font-weight: bold;
+              margin: 0;
+              padding: 0;
+              background-color: lightskyblue;
+          }
 
-      .header, .footer {
-          background-color: darkblue; /* Blue background color */
-          color: #ffffff; /* White text color */
-          text-align: center;
-          padding: 10px;
-      }
+          .container.body-content 
+          {
+              margin-top: auto;
+          }
 
-      .footer {
-          position: fixed;
-          bottom: 0;
-          width: 100%;
-      }
+          .form-group {
+              margin-bottom: 0px;
+          }
 
-      .content {
-          padding: 20px;
-          background-color: aqua;
-      }
+          h3 
+          {
+              color: darkblue;
+          }
+          h6 
+          {
+              color: darkblue;
+          }
 
-      .search-bar {
-          margin-right: auto; /* Push the search bar to the left */
-          text-align: right;
-      }
+          nav 
+          {
+              background-color: darkblue;
+              padding: 15px 0;
+              text-align: center;
+          }
 
-      #main-content {
-          margin-left: 20px;
-      }
+          .navbar-brand 
+          {
+              color: white;
+              font-size: 1.5em;
+          }
 
-      .submitButtons {
-          width: auto;
-          margin-top: 30px;
-          font-family: 'Times New Roman', Times, serif;
-          font-weight: bold;
-          font-size: 16px;
-          color: white;
-          background-color: darkblue; /* Set the button background color */
-          border: none; /*the button border  */
-          padding: 10px 20px;
-      }
+          .navbar-nav .nav-item .nav-link 
+          {
+              color: white;
+          }
 
-      .headerTitles {
-          font-family: 'Times New Roman', Times, serif;
-          font-weight: bold;
-          font-size: 22px;
-          color: white;
-      }
+          .navbar-title 
+          {
+              text-align: center;
+          }
 
-      .bodyTitles 
-      {
-          font-family: 'Times New Roman', Times, serif;
-          font-weight: bold;
-          font-size: 22px;
-          color: black;
-      }
+          .footer 
+          {
+              width: 100%;
+              padding: 10px;
+              background-color: darkblue;
+              color: white;
+              text-align: center;
+              position: fixed;
+              left: 0;
+              bottom: 0;
+          }
 
-      #username, #password 
-      {
-          width: 550px; /*  width for the user and pss boxes*/
-      }
+          .editor-container 
+          {
+              flex: 1;
+              display: flex;
+              flex-direction: column; /* to Adjusted to column layout*/
+              align-items: flex-start;
+              margin-left: 50px; /* to Adjust margin */
+              align-items: center;
+          }
 
-      /* Additional styling for the input boxes  */
-      .form-group 
-      {
-          margin-bottom: 15px;
-      }
 
-      .main-header 
-      {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px;
-          background-color: #007BFF; /* Blue background color */
-          color: #ffffff; /* White text color */
-      }
 
-      .main-navigation ul 
-      {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-      }
+          #editor 
+          {
+              width: 100%;
+              margin-bottom: 10px;
+          }
 
-      .main-navigation li 
-      {
-          margin: 0 10px;
-      }
+          .namePrompt 
+          {
+              margin-bottom: 10px;
+              color: darkblue;
+          }
 
-      .main-navigation .left 
-      {
-          margin-right: auto; /* Push items to the left */
-      }
+          #submitButton
+          {
+              width: auto;
+              margin-top: 20px;
+               margin-bottom: 20px;
+              font-family: 'Times New Roman', Times, serif;
+              font-weight: bold;
+              font-size: 16px;
+              color: white;
+          }
 
-      .accordion-body ul 
-      {
-          padding: 0;
-          margin: 130px 100px 110px 110px;
-          float: right;
-      }
-  </style>
-
+          .navbar-brand 
+          {
+              display: block;
+              width: 100%;
+              text-align: center;
+          }
+        </style>
 </head>
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
+
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
@@ -152,31 +146,41 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">WealthWave Bank</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - WealthWave Bank</p>
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-orange">
+    <div class="container-fluid">
+        <!-- Brand -->
+         <a class="navbar-brand mx-auto" runat="server" href="~/">WealthWave Bank</a>
+
+        <!-- Toggle button for small screensvv.. -->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+        
+    <div class="container body-content"style="margin-bottom:auto">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+        </asp:ContentPlaceHolder>
+        <hr/>
+        <div class="footer bg-darkBlue">
+            <footer class="container-fluid text-center">
+                <p><%: DateTime.Now.Year %> WealthWave Bank</p>
             </footer>
         </div>
-    </form>
+    </div>
+
+</form>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
