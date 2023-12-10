@@ -3,7 +3,7 @@
 
 
 
-<div class="form-group "  style="margin-top: 100px;">
+<div class="form-group "  style="margin-top: 50px;">
     <h3>WealthWave Bank Registration Form</h3>
 
 </div>
@@ -11,14 +11,14 @@
         <!-- User Information -->
         <div class="row">
             <div class="col-md-6">
-                 <div class="form-group" style="margin-top: 50px;">
+                 <div class="form-group" style="margin-top: 30px;">
                     <label for="firstName">First Name:</label>
                     <asp:TextBox ID="firstName" runat="server" CssClass="form-control" />
                 </div>
             </div>
             
             <div class="col-md-6">
-                 <div class="form-group" style="margin-top: 50px;">
+                 <div class="form-group" style="margin-top: 30px;">
                     <label for="lastName">Last Name:</label>
                     <asp:TextBox ID="lastName" runat="server" CssClass="form-control" />
                 </div>
@@ -107,13 +107,13 @@
         </div>
         
         <!-- Terms and Conditions -->
-       <div class="form-group" style="margin-bottom: 50px; margin-top: 50px;">
+       <div class="form-group" style="margin-bottom: 10px; margin-top: 10px;">
             <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required />
             <label for="agreeToTerms">I agree to the terms and conditions    WE MUST NEED  USER AGGREEMENT PAPER </label>
         </div>
         
         <!-- Submit Button -->
-        <div class="form-group" style="margin-top: 50px;">
+        <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
             <asp:Button Text="Register" runat="server" class="btn btn-primary" style="background-color: darkblue; font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 16px; color: white;" OnClick="RegisterButton_Click" />
         </div>
 
