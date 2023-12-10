@@ -22,16 +22,41 @@ namespace BankApplication1
 
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
-            // VALIDATE DATABASE CREDENTIALS
-            // Redirect to the next page 
-            Response.Redirect("HomePage.aspx");
+            
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
 
             conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
             conn.Open();
+            querystr = "";
+            querystr = "SELECT * FROM bankapplication.customer WHERE username='" + username.Text + "' AND password='" + password.Text + "'";
+            cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
+            reader = cmd.ExecuteReader();
+            name = "";
+            while (reader.HasRows & reader.Read())
+            {
+                name += reader.GetString(reader.GetOrdinal("FirstName")) + " " + reader.GetString(reader.GetOrdinal("LastName"));
+            }
 
+            if (reader.HasRows)
+            {
+                Session["UserName"] = name;
+
+                // VALIDATE DATABASE CREDENTIALS
+                // Redirect to the next page 
+                Response.BufferOutput = true;
+                Response.Redirect("HomePage.aspx", false);
+            }
+            else
+            {
+                // display an error message to the user
+                Response.Write("<script>alert('Invalid User.');</script>");
+            }
+
+            reader.Close();
             conn.Close();
+
+           
         }
 
     }
