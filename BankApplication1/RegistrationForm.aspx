@@ -109,7 +109,7 @@
         <!-- Terms and Conditions -->
        <div class="form-group" style="margin-bottom: 50px; margin-top: 50px;">
             <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required />
-            <label for="agreeToTerms">I agree to the terms and conditions    WE MUST NEED TO HAVE ADOBE FORM OF USER AGGREEMENT PAPER SO WE CAN LIN IT HERE THEN USER CAN READ AND AGREE ON IT</label>
+            <label for="agreeToTerms">I agree to the terms and conditions    WE MUST NEED  USER AGGREEMENT PAPER </label>
         </div>
         
         <!-- Submit Button -->
