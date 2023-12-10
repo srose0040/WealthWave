@@ -13,5 +13,11 @@ namespace BankApplication1
         {
 
         }
+
+        protected void AgreeButton_Click(object sender, EventArgs e)
+        {
+            // Redirect the user to another page
+            Response.Redirect("RegistrationForm.aspx");
+        }
     }
 }
