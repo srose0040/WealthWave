@@ -39,7 +39,7 @@ namespace BankApplication1
             
         }
 
-        private void registerUser()
+        private void registerUser() // This method connects to SQL database and puts users info in the Customer table
         {
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
 
