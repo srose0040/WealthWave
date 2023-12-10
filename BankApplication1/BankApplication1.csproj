@@ -129,6 +129,7 @@
     <Content Include="HomePage.aspx" />
     <Content Include="LogInPage.aspx" />
     <Content Include="RegistrationForm.aspx" />
+    <Content Include="SavingAccount.aspx" />
     <Content Include="StartPage.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -237,6 +238,13 @@
     </Compile>
     <Compile Include="RegistrationForm.aspx.designer.cs">
       <DependentUpon>RegistrationForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SavingAccount.aspx.cs">
+      <DependentUpon>SavingAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SavingAccount.aspx.designer.cs">
+      <DependentUpon>SavingAccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="StartPage.aspx.cs">
       <DependentUpon>StartPage.aspx</DependentUpon>
