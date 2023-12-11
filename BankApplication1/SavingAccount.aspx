@@ -18,7 +18,7 @@
 <div class="col-md-6">
     <div class="form-group" style="margin-top: 50px;">
         <label for="balance">Balance:</label>
-        <asp:TextBox ID="balanceTextBox" runat="server" CssClass="form-control" />
+        <asp:TextBox ID="balanceTextBox" runat="server" CssClass="form-control" ReadOnly="true"/>
     </div>
 </div>
 <div class="col-md-6">

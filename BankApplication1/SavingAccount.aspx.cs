@@ -34,6 +34,8 @@ namespace BankApplication1
 
             // Initialize the SavingsAccount instance with the retrieved balance
             savingsAccount.CurrentBalance = currentBalance;
+
+
         }
 
         // Method to retrieve user balance from the database
