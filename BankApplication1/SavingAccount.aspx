@@ -37,6 +37,7 @@
     <!-- Submit Button -->
 <div class="form-group" style="margin-top: 50px;">
     <asp:Button Text="Submit" runat="server" class="btn btn-primary" style="background-color: darkblue; font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 16px; color: white;" OnClick="TransactionButton_Click" />
+    <asp:Button ID="btnLogout" runat ="server" CssClass="fancy-button primary-button" Text="Log Out" OnClick="LogoutButton_Click" />
 </div>
 
     <!--lbel for Error message-->

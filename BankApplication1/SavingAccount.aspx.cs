@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WealthWave;
@@ -122,6 +123,17 @@ namespace BankApplication1
             Session["CustomerBalance"] = currentBalance;
 
             balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Current balance updated (might be good to let user know interest applied on every deposit)
+        }
+
+        // This method is called when the user clicks a logout button or takes some other action to log out
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            // Log the user out
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+
+            // Redirect to the login page or any other desired page
+            Response.Redirect("~/LoginPage.aspx");
         }
     }
 }
