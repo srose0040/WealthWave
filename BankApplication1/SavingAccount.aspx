@@ -38,5 +38,10 @@
 <div class="form-group" style="margin-top: 50px;">
     <asp:Button Text="Submit" runat="server" class="btn btn-primary" style="background-color: darkblue; font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 16px; color: white;" OnClick="TransactionButton_Click" />
 </div>
+
+    <!--lbel for Error message-->
+<div>
+    <asp:Label ID="ShowMessage" runat="server" ForeColor="Black" Text=""></asp:Label>
+</div>
         
 </asp:Content>

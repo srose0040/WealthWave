@@ -78,7 +78,9 @@ namespace BankApplication1
                 //// Perform deposit transaction
                 string message;
                 savingsAccount.DepositTransaction(depositAmount, out message);
-                // MESSAGE MUST BE PRESENTED TO USER
+
+                // Present message to user
+                ShowMessage.Text = message;
 
                 //// Update the database with the new balance
                 UpdateBalanceInDatabase(userID, savingsAccount.CurrentBalance);
@@ -93,7 +95,10 @@ namespace BankApplication1
                 //// Perform deposit transaction
                 string message;
                 savingsAccount.WithdrawTransaction(depositAmount, out message);
-                // MESSAGE MUST BE PRESENTED TO USER
+
+                // Present message to user
+                ShowMessage.Text = message;
+                
 
                 //// Update the database with the new balance
                 UpdateBalanceInDatabase(userID, savingsAccount.CurrentBalance);
