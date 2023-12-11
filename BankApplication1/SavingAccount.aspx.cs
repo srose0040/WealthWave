@@ -35,6 +35,7 @@ namespace BankApplication1
             // Initialize the SavingsAccount instance with the retrieved balance
             savingsAccount.CurrentBalance = currentBalance;
 
+            balanceTextBox.Text = savingsAccount.CurrentBalance.ToString();
 
         }
 
@@ -84,7 +85,18 @@ namespace BankApplication1
             }
             else if (withdrawRadioButton.Checked)
             {
-                // WITHDRAW.
+                double depositAmount = Convert.ToDouble(amountTextBox.Text);
+
+                //Initialize the SavingsAccount instance with the retrieved balance
+                savingsAccount.CurrentBalance = customerBalance;
+
+                //// Perform deposit transaction
+                string message;
+                savingsAccount.WithdrawTransaction(depositAmount, out message);
+                // MESSAGE MUST BE PRESENTED TO USER
+
+                //// Update the database with the new balance
+                UpdateBalanceInDatabase(userID, savingsAccount.CurrentBalance);
             }
            
         }
