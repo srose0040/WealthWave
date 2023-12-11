@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" Title="Loan Account" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LoanAccount.aspx.cs" Inherits="BankApplication1.LoanAccount" %>
+﻿<%@ Page Language="C#" Title="Checking Account" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ChequingAccount.aspx.cs" Inherits="BankApplication1.ChequingAccount" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
    <div class="text-center" style="margin-top: 50px; margin-bottom: 50px;">
  
-        <h1 class="display-4">Loan Account [AccountNumber]</h1>
+        <h1 class="display-4">Chequing  Account [AccountNumber]</h1>
     </div>
 
     <div class="form-group "  style="margin-top: 100px; margin-bottom: 50px;">
@@ -12,7 +12,7 @@
     </div>
 
     <div>
-        <label for="lblBalance">Statement Balance:</label>
+        <label for="lblBalance">Balance:</label>
         <asp:Label ID="lblBalance" runat="server" Text="$1,000.00" />
     </div>
        <div class="bodyTitles" style="position: fixed; top: 300px; right: 100px;">
@@ -23,16 +23,4 @@
                 <li><asp:HyperLink NavigateUrl="ContactAndSupport.aspx" Text="Contact and Support" runat="server" /></li>
             </ul>
         </div>
-
-<div class="form-group" style="margin-top: 100px; margin-bottom: 50px;">
-    <ul class="form-group-labels">
-        <li><label for="lblLastPayment">Last Payment:</label></li>
-        <li><label for="lblCurrentMinPayment">Current Minimum Payment:</label></li>
-        <li><label for="lblOverLimitPayment">Over Limit Payment:</label></li>
-        <li><label for="lblTotalPayment">Total Owed Balance:</label></li>
-        <li><label for="lblDetailPayment">Detail Loan Transactions:</label></li>
-    </ul>
-</div>
-
-
 </asp:Content>

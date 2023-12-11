@@ -7,12 +7,17 @@ using System.Web.UI.WebControls;
 
 namespace BankApplication1
 {
-    public partial class TransactionsHistory : System.Web.UI.Page
+    public partial class TermsAndConditions : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Load the content of your agreement dynamically
-            string filePath = Server.MapPath("~/Content/BankAgreement.txt");
+
+        }
+
+        protected void AgreeButton_Click(object sender, EventArgs e)
+        {
+            // Redirect the user to another page
+            Response.Redirect("RegistrationForm.aspx");
         }
     }
 }
