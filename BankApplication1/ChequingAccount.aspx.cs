@@ -33,7 +33,7 @@ namespace BankApplication1
             // Initialize the SavingsAccount instance with the retrieved balance
             chequingAccount.CurrentBalance = currentBalance;
 
-            balanceTextBox.Text = chequingAccount.CurrentBalance.ToString(); // Displaying balance (might be good to let user know interest applied on every deposit)
+            balanceTextBox.Text = chequingAccount.CurrentBalance.ToString(); // Displaying balance 
         }
 
         // Method to retrieve user balance from the database
