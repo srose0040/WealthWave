@@ -5,9 +5,10 @@
 
   <div class="text-center" style="margin-top: 50px; margin-bottom: 50px;">
  
-     <h1 class="display-4">Chequing  Account [AccountNumber]</h1>
+     <h1 class="display-4">Chequing Account||Account Number:  <%= Session["CustomerId"] %></h1>
  </div>
 
+    
     
 <div class="col-md-6">
     <div class="form-group" style="margin-top: 50px;">
