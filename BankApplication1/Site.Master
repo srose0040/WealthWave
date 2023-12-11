@@ -172,7 +172,7 @@
         <!-- Navigation Links -->
         <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/HomePage">Home</a></li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
                <li class="nav-item"><a class="nav-link" runat="server" href="~/ContactAndSupport.aspx">Contact</a></li>
             </ul>

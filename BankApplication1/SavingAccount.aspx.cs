@@ -68,6 +68,7 @@ namespace BankApplication1
             else
             {
                 balance = (double)Session["SavingAccountBalance"];
+                customerBalance = balance;
             }
 
             

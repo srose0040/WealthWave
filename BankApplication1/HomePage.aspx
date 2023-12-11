@@ -11,7 +11,7 @@
         <p>Choose an account type:</p>
         <ul>
             <li><asp:HyperLink NavigateUrl="SavingAccount.aspx" Text="Savings Account" runat="server" /></li>
-            <li><asp:HyperLink NavigateUrl="CheckingAccount.aspx" Text="Checking Account" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="ChequingAccount.aspx" Text="Chequing Account" runat="server" /></li>
             <li><asp:HyperLink NavigateUrl="LoanAccount.aspx" Text="Loan Account" runat="server" /></li>
         </ul>
     </div>
