@@ -114,7 +114,9 @@ namespace BankApplication1
 
 
             cmd.ExecuteReader();
+            conn.Close();
 
+            conn.Open();
             querystr = "";
             querystr = "SELECT CustomerId FROM bankapplication.customer WHERE username='" + username.Text + "' AND password='" + password.Text + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);

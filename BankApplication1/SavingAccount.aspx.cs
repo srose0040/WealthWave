@@ -50,7 +50,7 @@ namespace BankApplication1
             reader = cmd.ExecuteReader();
             while (reader.HasRows & reader.Read())
             {
-                balance= reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
+                balance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
                 Session["CustomerBalance"] = balance;
                 customerBalance = balance;
 
