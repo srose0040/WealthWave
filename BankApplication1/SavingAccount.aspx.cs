@@ -82,7 +82,7 @@ namespace BankApplication1
             }
             else if (withdrawRadioButton.Checked)
             {
-                // WITHDRAW
+                // WITHDRAW.
             }
            
         }
