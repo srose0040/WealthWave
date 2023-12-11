@@ -72,8 +72,67 @@ namespace BankApplication1
 
         protected void TransactionButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/TransactionsHistory.aspx");
+            if (depositRadioButton.Checked)
+            {
+                double depositAmount = Convert.ToDouble(amountTextBox.Text);
+
+                //Initialize the Account instance with the retrieved balance
+                chequingAccount.CurrentBalance = customerBalance;
+
+                //// Perform deposit transaction
+                string message;
+                chequingAccount.DepositTransaction(depositAmount, out message);
+
+                // Present message to user
+                ShowMessage.Text = message;
+
+                //// Update the database with the new balance
+                UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
+            }
+            else if (withdrawRadioButton.Checked)
+            {
+                double depositAmount = Convert.ToDouble(amountTextBox.Text);
+
+                //Initialize the SavingsAccount instance with the retrieved balance
+                chequingAccount.CurrentBalance = customerBalance;
+
+                //// Perform deposit transaction
+                string message;
+                chequingAccount.WithdrawTransaction(depositAmount, out message);
+
+                // Present message to user
+                ShowMessage.Text = message;
+
+
+                //// Update the database with the new balance
+                UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
+            }
         }
+
+        // Method to set balance in database
+        private void UpdateBalanceInDatabase(int userId, double currentBalance)
+        {
+
+            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+            conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
+            conn.Open();
+            querystr = "";
+            querystr = "UPDATE Customer SET CurrentBalance ='" + currentBalance + "' WHERE CustomerId='" + userID.ToString() + "'";
+            cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
+            cmd.ExecuteReader();
+            conn.Close();
+
+            Session["ChequingAccountBalance"] = currentBalance;
+
+            balanceTextBox.Text = chequingAccount.CurrentBalance.ToString(); // Current balance updated (might be good to let user know interest applied on every deposit)
+        }
+
+
+        // USE A DIFFERENT BUTTON FOR THIS
+        //protected void TransactionButton_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("~/TransactionsHistory.aspx");
+        //}
 
         // This method is called when the user clicks a logout button or takes some other action to log out
         protected void LogoutButton_Click(object sender, EventArgs e)
