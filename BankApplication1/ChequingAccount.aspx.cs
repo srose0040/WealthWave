@@ -47,12 +47,12 @@ namespace BankApplication1
                 conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
                 conn.Open();
                 querystr = "";
-                querystr = "SELECT CurrentBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
+                querystr = "SELECT ChequingAccountBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
                 cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
                 reader = cmd.ExecuteReader();
                 while (reader.HasRows & reader.Read())
                 {
-                    balance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
+                    balance = reader.GetDouble(reader.GetOrdinal("ChequingAccountBalance"));
                     Session["ChequingAccountBalance"] = balance;
                     customerBalance = balance;
 
@@ -118,7 +118,7 @@ namespace BankApplication1
             conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
             conn.Open();
             querystr = "";
-            querystr = "UPDATE Customer SET CurrentBalance ='" + currentBalance + "' WHERE CustomerId='" + userID.ToString() + "'";
+            querystr = "UPDATE Customer SET ChequingAccountBalance ='" + currentBalance + "' WHERE CustomerId='" + userID.ToString() + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
             cmd.ExecuteReader();
             conn.Close();
