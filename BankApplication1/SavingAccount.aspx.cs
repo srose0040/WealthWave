@@ -35,7 +35,7 @@ namespace BankApplication1
             // Initialize the SavingsAccount instance with the retrieved balance
             savingsAccount.CurrentBalance = currentBalance;
 
-            balanceTextBox.Text = savingsAccount.CurrentBalance.ToString();
+            balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Displaying balance (might be good to let user know interest applied on every deposit)
 
         }
 
@@ -121,7 +121,7 @@ namespace BankApplication1
 
             Session["CustomerBalance"] = currentBalance;
 
-            balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Current balance updated
+            balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Current balance updated (might be good to let user know interest applied on every deposit)
         }
     }
 }
