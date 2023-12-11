@@ -106,7 +106,7 @@ namespace BankApplication1
            
         }
 
-        // Method to retrieve user balance from the database
+        // Method to set balance in database
         private void UpdateBalanceInDatabase(int userId, double currentBalance)
         {
 
@@ -121,6 +121,7 @@ namespace BankApplication1
 
             Session["CustomerBalance"] = currentBalance;
 
+            balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Current balance updated
         }
     }
 }
