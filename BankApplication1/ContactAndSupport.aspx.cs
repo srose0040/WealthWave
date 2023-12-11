@@ -12,6 +12,8 @@ namespace BankApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            // Load the content of your agreement dynamically
+            string filePath = Server.MapPath("~/ContactInformation.pdf");
         }
     }
 }

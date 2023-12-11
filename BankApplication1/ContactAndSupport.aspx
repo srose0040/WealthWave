@@ -5,6 +5,10 @@
     <div class="text-center">
         <h1 class="display-4">Contact And Support page </h1>
     </div>
+     <div>
+          <!-- Embed PDF viewer using iframe -->
+        <iframe src="ContactInformation.pdf" width="100%" height="600px"></iframe>
+    </div>
         
 </asp:Content>
 
