@@ -336,6 +336,7 @@
     <Compile Include="TransactionsHistory.aspx.designer.cs">
       <DependentUpon>TransactionsHistory.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserDetails.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
