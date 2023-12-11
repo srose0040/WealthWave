@@ -65,43 +65,43 @@ namespace BankApplication1
 
         protected void TransactionButton_Click(object sender, EventArgs e)
         {
-            double depositAmount = Convert.ToDouble(amountTextBox.Text);
+            if (depositRadioButton.Checked)
+            {
+                double depositAmount = Convert.ToDouble(amountTextBox.Text);
 
-            //Initialize the SavingsAccount instance with the retrieved balance
-            savingsAccount.CurrentBalance = customerBalance;
+                //Initialize the SavingsAccount instance with the retrieved balance
+                savingsAccount.CurrentBalance = customerBalance;
 
-            //// Perform deposit transaction
-            string message;
-            savingsAccount.DepositTransaction(depositAmount, out message);
-            // MESSAGE MUST BE PRESENTED TO USER
+                //// Perform deposit transaction
+                string message;
+                savingsAccount.DepositTransaction(depositAmount, out message);
+                // MESSAGE MUST BE PRESENTED TO USER
 
-            //// Update the database with the new balance
-            UpdateBalanceInDatabase(userID, savingsAccount.CurrentBalance);
+                //// Update the database with the new balance
+                UpdateBalanceInDatabase(userID, savingsAccount.CurrentBalance);
+            }
+            else if (withdrawRadioButton.Checked)
+            {
+                // WITHDRAW
+            }
+           
         }
 
         // Method to retrieve user balance from the database
-        private double UpdateBalanceInDatabase(int userId, double currentBalance)
+        private void UpdateBalanceInDatabase(int userId, double currentBalance)
         {
 
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
             conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
             conn.Open();
             querystr = "";
-            querystr = "SELECT CurrentBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
+            querystr = "UPDATE Customer SET CurrentBalance ='" + currentBalance + "' WHERE CustomerId='" + userID.ToString() + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
-            reader = cmd.ExecuteReader();
-            while (reader.HasRows & reader.Read())
-            {
-                balance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
-                Session["CustomerBalance"] = balance;
-                customerBalance = balance;
-
-            }
-            reader.Close();
+            cmd.ExecuteReader();
             conn.Close();
 
+            Session["CustomerBalance"] = currentBalance;
 
-            return balance;
         }
     }
 }
