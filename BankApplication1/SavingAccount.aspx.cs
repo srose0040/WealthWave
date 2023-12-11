@@ -36,6 +36,7 @@ namespace BankApplication1
             // Initialize the SavingsAccount instance with the retrieved balance
             savingsAccount.CurrentBalance = currentBalance;
 
+
             balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Displaying balance (might be good to let user know interest applied on every deposit)
 
         }
@@ -45,22 +46,31 @@ namespace BankApplication1
         {
             double balance = 0.0;
 
-            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
-            conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
-            conn.Open();
-            querystr = "";
-            querystr = "SELECT CurrentBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
-            cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
-            reader = cmd.ExecuteReader();
-            while (reader.HasRows & reader.Read())
+            if (Session["SavingAccountBalance"] == null)
             {
-                balance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
-                Session["CustomerBalance"] = balance;
-                customerBalance = balance;
-       
+                String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+                conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
+                conn.Open();
+                querystr = "";
+                querystr = "SELECT CurrentBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
+                cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.HasRows & reader.Read())
+                {
+                    balance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
+                    Session["SavingAccountBalance"] = balance;
+                    customerBalance = balance;
+
+                }
+                reader.Close();
+                conn.Close();
             }
-            reader.Close();
-            conn.Close();
+            else
+            {
+                balance = (double)Session["SavingAccountBalance"];
+            }
+
+            
                      
 
             return balance;
@@ -120,7 +130,7 @@ namespace BankApplication1
             cmd.ExecuteReader();
             conn.Close();
 
-            Session["CustomerBalance"] = currentBalance;
+            Session["SavingAccountBalance"] = currentBalance;
 
             balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Current balance updated (might be good to let user know interest applied on every deposit)
         }
