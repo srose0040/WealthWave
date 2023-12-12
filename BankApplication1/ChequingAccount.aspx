@@ -34,15 +34,15 @@
         <asp:RadioButton ID="withdrawRadioButton" runat="server" GroupName="TransactionType" />
     </div>
 </div>
-
-    <div class="fancy-buttons-container" style="margin-bottom: 200px; margin-top: 200px;">
-        <asp:Button Text="Submit" runat="server" class="btn btn-primary" style="background-color: darkblue; font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 16px; color: white;" OnClick="TransactionButton_Click" />
-        <asp:Button ID="btnLogout" runat ="server" CssClass="fancy-button primary-button" Text="Log Out" OnClick="LogoutButton_Click" />
-    </div>
+        <!-- Submit Button -->
+<div class="form-group" style="margin-top: 50px;">
+    <asp:Button ID="savingSubmitbtn" CssClass="fancy-button primary-button" Text="Submit" runat="server" class="btn btn-primary" OnClick="TransactionButton_Click" />
+    <asp:Button ID="btnLogout" CssClass="fancy-button primary-button"  Text="Log Out" runat ="server"  class="btn btn-primary" OnClick="LogoutButton_Click" />
+</div>
 
     <!--lbel for Error message-->
 <div>
-    <asp:Label ID="ShowMessage" runat="server" ForeColor="Black" Text=""></asp:Label>
+    <asp:Label ID="ShowMessage" runat="server" ForeColor="Red" Text=""></asp:Label>
 </div>
 
 
