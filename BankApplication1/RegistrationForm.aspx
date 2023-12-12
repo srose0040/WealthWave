@@ -101,7 +101,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <asp:TextBox ID="password" runat="server" TextMode="Password" CssClass="form-control" />
+                    <asp:TextBox ID="Password1" runat="server" TextMode="Password" CssClass="form-control" />
                 </div>
             </div>
         </div>
