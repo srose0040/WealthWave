@@ -9,11 +9,15 @@ namespace BankApplication1
 {
     public partial class ContactAndSupport : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
             // Load the content of your agreement dynamically
             string filePath = Server.MapPath("~/ContactInformation.pdf");
         }
+
+
+
     }
 }
