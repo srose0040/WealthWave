@@ -68,7 +68,7 @@ namespace WealthWave
         public double LoanAmount
         {
             get { return loanAmount; }
-            private set { loanAmount = value; }
+            set { loanAmount = value; }
         }
 
         /*
@@ -227,6 +227,11 @@ namespace WealthWave
                     CurrentBalance += newDepositAmount; // Adding the deposit amount to the current balance
                     LoanAmount -= newDepositAmount; // Updating loan amount
                     InterestCalculation();
+                }
+                else if (LoanAmount < 0.02) // Fixes floating point problems
+                {
+                    LoanAmount = 0;
+                    CurrentBalance = 0;
                 }
                 else // they are trying to overfill the account THIS WILL ALSO BE CALLED IF THE USER DOES NOT WITHDRAW THEIR LOAN FIRST
                 {

@@ -77,10 +77,13 @@ namespace BankApplication1
 
                 //Initialize the Account instance with the retrieved balance
                 loanAccount.CurrentBalance = customerBalance;
+                loanAccount.LoanAmount = (double)Session["LoanAmount"];
 
                 //// Perform deposit transaction
                 string message;
                 loanAccount.DepositTransaction(depositAmount, out message);
+
+                Session["LoanAmount"] = loanAccount.LoanAmount;
 
                 // Present message to user
                 ShowMessage.Text = message;
@@ -95,10 +98,12 @@ namespace BankApplication1
 
                 //Initialize the SavingsAccount instance with the retrieved balance
                 loanAccount.CurrentBalance = customerBalance;
+                loanAccount.LoanAmount = (double)Session["LoanAmount"];
 
                 // Apply for loan
                 string message;
                 loanAccount.ApplyForLoan(depositAmount, out message);
+                Session["LoanAmount"] = loanAccount.LoanAmount;
 
                 // Present message to user
                 ShowMessage.Text = message;
