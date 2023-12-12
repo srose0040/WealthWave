@@ -19,20 +19,31 @@ namespace BankApplication1
         MySql.Data.MySqlClient.MySqlDataReader reader;
         String querystr;
         WealthWave.ChequingAccount chequingAccount;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            userID = (int)Session["CustomerId"];
+            // I ADDED THIS BECOS I GOT EXCEPTION THRWN WHEN I RUN THE PROGRAM SO INCASE IF ANYONE RUNS IT FROM THIS PAGE IT AUTOMATICALLY TAKES THEM TO LOGIN PAGE 
+            // THE RESEAN IS THAT CUSTOMER ID WILL BE NULL ONLY IF USER NOT LOGGED IN SO WE NEED THEM TO LOGIN
+            if (Session["CustomerId"] != null)
+            {
+                userID = (int)Session["CustomerId"];
 
-            // Create an instance of the Chequing Account class
-            chequingAccount = new WealthWave.ChequingAccount();
+                // Create an instance of the Chequing Account class
+                chequingAccount = new WealthWave.ChequingAccount();
 
-            // Retrieve user balance from the database
-            double currentBalance = GetBalanceFromDatabase(userID);
+                // Retrieve user balance from the database
+                double currentBalance = GetBalanceFromDatabase(userID);
 
-            // Initialize the SavingsAccount instance with the retrieved balance
-            chequingAccount.CurrentBalance = currentBalance;
+                // Initialize the SavingsAccount instance with the retrieved balance
+                chequingAccount.CurrentBalance = currentBalance;
 
-            balanceTextBox.Text = chequingAccount.CurrentBalance.ToString(); // Displaying balance 
+                balanceTextBox.Text = chequingAccount.CurrentBalance.ToString(); // Displaying balance 
+            }
+            else
+            {
+                // Redirect to the login page BCOS THE CUSTOMER ID WILL BE NULL ONLY IF USER NOT LOGGED IN SO WE NEED THEM TO LOGIN
+                Response.Redirect("~/LoginPage.aspx");
+            }
         }
 
         // Method to retrieve user balance from the database
