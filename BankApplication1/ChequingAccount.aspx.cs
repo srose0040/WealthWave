@@ -75,7 +75,7 @@ namespace BankApplication1
                 balance = (double)Session["ChequingAccountBalance"];
                 customerBalance = balance;
             }
-           
+
 
 
             return balance;
@@ -150,7 +150,7 @@ namespace BankApplication1
         {
             // Log the user out
             FormsAuthentication.SignOut();
-            Session.Abandon(); 
+            Session.Abandon();
 
             // Redirect to the login page or any other desired page
             Response.Redirect("~/LoginPage.aspx");
