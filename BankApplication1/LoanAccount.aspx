@@ -5,7 +5,7 @@
     
 
     <div class="text-center">
-        <h1 class="display-4">Saving Account||Account Number:  <%= Session["CustomerId"] %> </h1>
+        <h1 class="display-4">Loan Account||Account Number:  <%= Session["CustomerId"] %> </h1>
     </div>
 
     
