@@ -5,8 +5,12 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="text-center">
-        <h1 class="display-4">Saving account page </h1>
+        <h3 class="display-4">Saving Account </h3>
     </div>
+
+     <div>
+        <p>Account Number:  <%= Session["CustomerId"] %><%= Session["CustomerId"] %></p>
+     </div>
 
     
 <div class="col-md-6">
@@ -36,12 +40,17 @@
 
     <!-- Submit Button -->
 <div class="form-group" style="margin-top: 50px;">
-    <asp:Button Text="Submit" runat="server" class="btn btn-primary" style="background-color: darkblue; font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 16px; color: white;" OnClick="TransactionButton_Click" />
+</div>
+
+        <!-- Submit Button -->
+<div class="form-group" style="margin-top: 50px;">
+    <asp:Button ID="savingSubmitbtn" CssClass="fancy-button primary-button" Text="Submit" runat="server" class="btn btn-primary" OnClick="TransactionButton_Click" />
+    <asp:Button ID="btnLogout" CssClass="fancy-button primary-button"  Text="Log Out" runat ="server"  class="btn btn-primary" OnClick="LogoutButton_Click" />
 </div>
 
     <!--lbel for Error message-->
 <div>
-    <asp:Label ID="ShowMessage" runat="server" ForeColor="Black" Text=""></asp:Label>
+    <asp:Label ID="ShowMessage" runat="server" ForeColor="Red" Text=""></asp:Label>
 </div>
         
 </asp:Content>

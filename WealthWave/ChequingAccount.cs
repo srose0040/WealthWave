@@ -29,6 +29,7 @@ namespace WealthWave
             annualFee = Constants.kDefaultAnnualFee;
             quartersOfTheYear = Constants.kZero;
             AccountLevel = Constants.kChequingAccount; // Letting the program know that this is a chequing account
+            CurrentBalance = CurrentBalance;
         }
 
         /*

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text.RegularExpressions;
@@ -19,7 +20,7 @@ namespace BankApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         protected void RegisterButton_Click(object sender, EventArgs e)
@@ -107,8 +108,8 @@ namespace BankApplication1
 
             querystr = "";
             // INPUT VALIDATION MUST BE DONE TO PREVENT SQL INJECTION
-            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password, CurrentBalance)" +
-                "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + password.Text + "','" + defaultBalance + "')";
+            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password1, CurrentBalance)" +
+                "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + Password1.Text + "','" + defaultBalance + "')";
 
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
@@ -118,14 +119,17 @@ namespace BankApplication1
 
             conn.Open();
             querystr = "";
-            querystr = "SELECT CustomerId FROM bankapplication.customer WHERE username='" + username.Text + "' AND password='" + password.Text + "'";
+            querystr = "SELECT CustomerId FROM bankapplication.customer WHERE username='" + username.Text + "' AND Password1='" + Password1.Text + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
             reader = cmd.ExecuteReader();
             while (reader.HasRows & reader.Read())
             {
-                int customerId = reader.GetInt32(reader.GetOrdinal("CustomerID"));
+                int customerId = reader.GetInt32(reader.GetOrdinal("CustomerId"));
                 Session["CustomerId"] = customerId;
+
+                // Output debug information to Visual Studio Output window
+                Debug.WriteLine("CustomerId in Session: " + Session["CustomerId"]);
 
             }
 

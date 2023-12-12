@@ -15,9 +15,9 @@ namespace WealthWave
     */
     public class LoanAccount : Account
     {
-        private double loanInterestRate;
-        private double loanAmount; // How much does the user owe the bank?
-        private int deferredPayments; // How many times have they tried to skirt around paying their bills
+        public double loanInterestRate;
+        public double loanAmount; // How much does the user owe the bank?
+        public int deferredPayments; // How many times have they tried to skirt around paying their bills
 
         /*
         * Constructor: LoanAccount() : base()
@@ -56,7 +56,7 @@ namespace WealthWave
         public double LoanInterestRate
         {
             get { return loanInterestRate; }
-            private set { loanInterestRate = value; } // Should only be able to be done internally
+            set { loanInterestRate = value; } // Should only be able to be done internally
         }
 
         /*
@@ -68,7 +68,7 @@ namespace WealthWave
         public double LoanAmount
         {
             get { return loanAmount; }
-            private set { loanAmount = value; }
+            set { loanAmount = value; }
         }
 
         /*
@@ -80,7 +80,7 @@ namespace WealthWave
         public int DeferredPayments
         {
             get { return deferredPayments; }
-            private set { deferredPayments = value; }
+            set { deferredPayments = value; }
         }
 
         /*
