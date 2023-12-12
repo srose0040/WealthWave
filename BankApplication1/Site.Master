@@ -98,42 +98,84 @@
               margin-bottom: 10px;
           }
 
-          .namePrompt 
-          {
+          .namePrompt {
               margin-bottom: 10px;
               color: darkblue;
           }
 
-          #submitButton
-          {
+          #submitButton {
               width: auto;
               margin-top: 20px;
-               margin-bottom: 20px;
+              margin-bottom: 20px;
               font-family: 'Times New Roman', Times, serif;
               font-weight: bold;
               font-size: 16px;
               color: white;
           }
 
-          .navbar-brand 
-          {
+          .navbar-brand {
               display: block;
               width: 100%;
               text-align: center;
           }
-          .form-group-labels 
-          {
+          .form-group-labels {
               list-style-type: none; /* Remove bullets */
               margin: 0;
               padding: 0;
               text-align: left; /* Adjust text alignment as needed */
           }
 
-              .form-group-labels li 
-              {
+              .form-group-labels li {
                   margin-bottom: 10px; /* Adjust spacing between labels as needed */
                   list-style-type: square; /* Use a square bullet */
               }
+          .fancy-buttons-container {
+              text-align: center;
+              margin-top: 20px; /* Adjust the spacing based on your layout */
+          }
+
+          .fancy-button {
+              padding: 10px 20px;
+              font-size: 16px;
+              border: none;
+              cursor: pointer;
+              border-radius: 5px;
+              transition: background-color 0.3s ease;
+          }
+
+          .primary-button,
+          .secondary-button {
+              background-color:darkblue; /* Green */
+              color: white;
+          }
+
+          .fancy-button:hover {
+              background-color: #555; /* Dark gray on hover */
+          }
+          .customer-details {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content:normal;
+          }
+
+          .customer-details label {
+              width: 45%; /* Adjust the width as needed */
+              margin-bottom: 1px; /* Adjust the margin as needed */
+          }
+
+          .customer-details label,
+          .customer-details .label-value {
+              box-sizing: border-box;
+              padding: 5px;
+          }
+
+          .customer-details .label-value {
+              width: 45%; /* Adjust the width as needed */
+          }
+
+
+
+
         </style>
 </head>
 <body>
@@ -172,9 +214,9 @@
         <!-- Navigation Links -->
         <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" runat="server" href="~/HomePage">Home</a></li>
+               <li class="nav-item"><a class="nav-link" runat="server" href="~/HomePage">Home</a></li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
-               <li class="nav-item"><a class="nav-link" runat="server" href="~/ContactAndSupport.aspx">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/ContactAndSupport.aspx">Contact</a></li>
             </ul>
         </div>
     </div>
