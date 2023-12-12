@@ -90,13 +90,21 @@ namespace BankApplication1
             }
             else if (withdrawRadioButton.Checked)
             {
+
                 double depositAmount = Convert.ToDouble(amountTextBox.Text);
 
                 //Initialize the SavingsAccount instance with the retrieved balance
                 loanAccount.CurrentBalance = customerBalance;
 
-                //// Perform deposit transaction
+                // Apply for loan
                 string message;
+                loanAccount.ApplyForLoan(depositAmount, out message);
+
+                // Present message to user
+                ShowMessage.Text = message;
+
+                //// Perform deposit transaction
+                message = "";
                 loanAccount.WithdrawTransaction(depositAmount, out message);
 
                 // Present message to user

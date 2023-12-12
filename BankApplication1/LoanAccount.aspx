@@ -17,19 +17,19 @@
 </div>
 <div class="col-md-6">
     <div class="form-group" style="margin-top: 50px;">
-        <label for="balance">Balance:</label>
+        <label for="balance">Balance To Pay Off:</label>
         <asp:TextBox ID="balanceTextBox" runat="server" CssClass="form-control" ReadOnly="true"/>
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group" style="margin-top: 50px;">
-        <label for="deposit">Deposit:</label>
+        <label for="deposit">Pay Off Loan:</label>
         <asp:RadioButton ID="depositRadioButton" runat="server" GroupName="TransactionType" />
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group" style="margin-top: 50px;">
-        <label for="withdraw">Withdraw:</label>
+        <label for="withdraw">Apply For Loan:</label>
         <asp:RadioButton ID="withdrawRadioButton" runat="server" GroupName="TransactionType" />
     </div>
 </div>
