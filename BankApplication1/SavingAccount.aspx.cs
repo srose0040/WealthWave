@@ -20,7 +20,6 @@ namespace BankApplication1
         MySql.Data.MySqlClient.MySqlCommand cmd;
         MySql.Data.MySqlClient.MySqlDataReader reader;
         String querystr;
-        String name;
         SavingsAccount savingsAccount;
 
         protected void Page_Load(object sender, EventArgs e)
