@@ -20,7 +20,53 @@ namespace BankApplication1
         WealthWave.LoanAccount loanAccount;
         protected void Page_Load(object sender, EventArgs e)
         {
+            userID = (int)Session["CustomerId"];
 
+            // Create an instance of the Loan Account class
+            loanAccount = new WealthWave.LoanAccount();
+
+            // Retrieve user balance from the database
+            double currentBalance = GetBalanceFromDatabase(userID);
+
+            // Initialize the SavingsAccount instance with the retrieved balance
+            loanAccount.CurrentBalance = currentBalance;
+
+            balanceTextBox.Text = loanAccount.CurrentBalance.ToString(); // Displaying balance 
+        }
+
+        // Method to retrieve user balance from the database
+        private double GetBalanceFromDatabase(int userId)
+        {
+            double balance = 0.0;
+
+            if (Session["LoanAccountBalance"] == null)
+            {
+                String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+                conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
+                conn.Open();
+                querystr = "";
+                querystr = "SELECT LoanAccountBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
+                cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.HasRows & reader.Read())
+                {
+                    balance = reader.GetDouble(reader.GetOrdinal("LoanAccountBalance"));
+                    Session["LoanAccountBalance"] = balance;
+                    customerBalance = balance;
+
+                }
+                reader.Close();
+                conn.Close();
+            }
+            else
+            {
+                balance = (double)Session["LoanAccountBalance"];
+                customerBalance = balance;
+            }
+
+
+
+            return balance;
         }
     }
 }
