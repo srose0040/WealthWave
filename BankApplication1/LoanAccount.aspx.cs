@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WealthWave;
@@ -67,6 +68,74 @@ namespace BankApplication1
 
 
             return balance;
+        }
+
+        protected void TransactionButton_Click(object sender, EventArgs e)
+        {
+            if (depositRadioButton.Checked)
+            {
+                double depositAmount = Convert.ToDouble(amountTextBox.Text);
+
+                //Initialize the Account instance with the retrieved balance
+                loanAccount.CurrentBalance = customerBalance;
+
+                //// Perform deposit transaction
+                string message;
+                loanAccount.DepositTransaction(depositAmount, out message);
+
+                // Present message to user
+                ShowMessage.Text = message;
+
+                //// Update the database with the new balance
+                UpdateBalanceInDatabase(userID, loanAccount.CurrentBalance);
+            }
+            else if (withdrawRadioButton.Checked)
+            {
+                double depositAmount = Convert.ToDouble(amountTextBox.Text);
+
+                //Initialize the SavingsAccount instance with the retrieved balance
+                loanAccount.CurrentBalance = customerBalance;
+
+                //// Perform deposit transaction
+                string message;
+                loanAccount.WithdrawTransaction(depositAmount, out message);
+
+                // Present message to user
+                ShowMessage.Text = message;
+
+
+                //// Update the database with the new balance
+                UpdateBalanceInDatabase(userID, loanAccount.CurrentBalance);
+            }
+        }
+
+        // Method to set balance in database
+        private void UpdateBalanceInDatabase(int userId, double currentBalance)
+        {
+
+            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+            conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
+            conn.Open();
+            querystr = "";
+            querystr = "UPDATE Customer SET LoanAccountBalance ='" + currentBalance + "' WHERE CustomerId='" + userID.ToString() + "'";
+            cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
+            cmd.ExecuteReader();
+            conn.Close();
+
+            Session["LoanAccountBalance"] = currentBalance;
+
+            balanceTextBox.Text = loanAccount.CurrentBalance.ToString(); // Current balance updated (might be good to let user know interest applied on every deposit)
+        }
+
+        // This method is called when the user clicks a logout button or takes some other action to log out
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            // Log the user out
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+
+            // Redirect to the login page or any other desired page
+            Response.Redirect("~/LoginPage.aspx");
         }
     }
 }
