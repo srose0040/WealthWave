@@ -12,8 +12,8 @@
 </div>
 
 <div class="form-group" style="margin-top: 50px;">
-    <label for="password">Password:</label>
-    <asp:TextBox ID="password" runat="server" TextMode="Password" CssClass="form-control" />
+    <label for="Password1">Password:</label>
+    <asp:TextBox ID="Password1" runat="server" TextMode="Password" CssClass="form-control" />
 </div>
     <div style="margin-top: 50px;">
         <asp:Button Text="Login" runat="server" class="btn btn-primary" style="background-color: darkblue; font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 16px; color: white;" OnClick="SubmitButton_Click" />
