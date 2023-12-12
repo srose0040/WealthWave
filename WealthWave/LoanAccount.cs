@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace WealthWave
 {
-   /*
-    * Class Name:	LoanAccount
-    * Purpose:		The purpose of this class is to provide the necessary data member and logic behind the methods and properties 
-    *               to be applied to a more specialized account type, which is itself the ChequingAccount. It inherits from the base class, Account
-    * By:			Saje Antoine Rose
-    * Abilities:	This class initializes its data members, allows access to its methods and properties.
-    */
+    /*
+     * Class Name:	LoanAccount
+     * Purpose:		The purpose of this class is to provide the necessary data member and logic behind the methods and properties 
+     *               to be applied to a more specialized account type, which is itself the ChequingAccount. It inherits from the base class, Account
+     * By:			Saje Antoine Rose
+     * Abilities:	This class initializes its data members, allows access to its methods and properties.
+     */
     public class LoanAccount : Account
     {
-        private double loanInterestRate;
-        private double loanAmount; // How much does the user owe the bank?
-        private int deferredPayments; // How many times have they tried to skirt around paying their bills
+        public double loanInterestRate;
+        public double loanAmount; // How much does the user owe the bank?
+        public int deferredPayments; // How many times have they tried to skirt around paying their bills
 
         /*
         * Constructor: LoanAccount() : base()
@@ -56,7 +56,7 @@ namespace WealthWave
         public double LoanInterestRate
         {
             get { return loanInterestRate; }
-            private set { loanInterestRate = value; } // Should only be able to be done internally
+            set { loanInterestRate = value; } // Should only be able to be done internally
         }
 
         /*
@@ -80,7 +80,7 @@ namespace WealthWave
         public int DeferredPayments
         {
             get { return deferredPayments; }
-            private set { deferredPayments = value; }
+            set { deferredPayments = value; }
         }
 
         /*
@@ -228,14 +228,9 @@ namespace WealthWave
                     LoanAmount -= newDepositAmount; // Updating loan amount
                     InterestCalculation();
                 }
-                else if (LoanAmount < 0.02) // Fixes floating point problems
-                {
-                    LoanAmount = 0;
-                    CurrentBalance = 0;
-                }
                 else // they are trying to overfill the account THIS WILL ALSO BE CALLED IF THE USER DOES NOT WITHDRAW THEIR LOAN FIRST
                 {
-                    message += "You cannot deposit more than the account will allow. This is a Loan Account, not a Savings Account.\n";
+                    message += "You cannot deposit more than the account will allow. This is a Loan Account, not a Savings Account";
                     message += string.Format("The most you can deposit is {0:C}\n", LoanAmount);
                 }
 
