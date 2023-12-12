@@ -24,6 +24,8 @@ namespace BankApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             userID = (int)Session["CustomerId"];
 
             // Create an instance of the SavingsAccount class

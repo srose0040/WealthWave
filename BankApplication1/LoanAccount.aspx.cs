@@ -20,6 +20,11 @@ namespace BankApplication1
         WealthWave.LoanAccount loanAccount;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!IsPostBack)
+            {
+                Session["LoanAmount"] = 0.00; // Initialization to remove exceptions
+            }
             userID = (int)Session["CustomerId"];
 
             // Create an instance of the Loan Account class
