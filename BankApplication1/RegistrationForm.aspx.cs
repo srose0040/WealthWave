@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text.RegularExpressions;
@@ -107,8 +108,13 @@ namespace BankApplication1
 
             querystr = "";
             // INPUT VALIDATION MUST BE DONE TO PREVENT SQL INJECTION
+<<<<<<< HEAD
             querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password1, SavingAccountBalance, ChequingAccountBalance, LoanAccountBalance)" +
                 "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + Password1.Text + "','" + defaultBalance + "','" + defaultBalance + "','" + defaultBalance + "')";
+=======
+            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password1, CurrentBalance)" +
+                "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + Password1.Text + "','" + defaultBalance + "')";
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
 
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
@@ -124,8 +130,11 @@ namespace BankApplication1
             reader = cmd.ExecuteReader();
             while (reader.HasRows & reader.Read())
             {
-                int customerId = reader.GetInt32(reader.GetOrdinal("CustomerID"));
+                int customerId = reader.GetInt32(reader.GetOrdinal("CustomerId"));
                 Session["CustomerId"] = customerId;
+
+                // Output debug information to Visual Studio Output window
+                Debug.WriteLine("CustomerId in Session: " + Session["CustomerId"]);
 
             }
 

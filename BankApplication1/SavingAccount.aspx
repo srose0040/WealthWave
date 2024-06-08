@@ -4,8 +4,13 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+<<<<<<< HEAD
     <div class="text-center" style= "margin-top: 50px;">
         <h3 class="display-4">Savings Account </h3>
+=======
+    <div class="text-center">
+        <h3 class="display-4">Saving Account </h3>
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
     </div>
 
      <div>

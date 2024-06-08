@@ -9,14 +9,18 @@
           <!-- Embed PDF viewer using iframe -->
         <iframe src="ContactInformation.pdf" width="100%" height="600px"></iframe>
     </div>
+<<<<<<< HEAD
 
 <!-- go back Submit Button -->
 <div class="form-group" style="margin-top: 50px;">
     <asp:Button ID="btnGoBack" CssClass="fancy-button primary-button" Text="Go Back" runat="server" class="btn btn-primary" OnClick="btnGoBack_Click" />
 </div>
 
+=======
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
         
 </asp:Content>
+
 
 
 

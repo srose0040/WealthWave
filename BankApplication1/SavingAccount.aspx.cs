@@ -24,22 +24,43 @@ namespace BankApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
 
 
             userID = (int)Session["CustomerId"];
+=======
+            // I ADDED THIS BECOS I GOT EXCEPTION THRWN WHEN I RUN THE PROGRAM SO INCASE IF ANYONE RUNS IT FROM THIS PAGE IT AUTOMATICALLY TAKES THEM TO LOGIN PAGE 
+            // THE RESEAN IS THAT CUSTOMER ID WILL BE NULL ONLY IF USER NOT LOGGED IN SO WE NEED THEM TO LOGIN
+            if (Session["CustomerId"] != null)
+            {
+                // User is logged in, proceed with loading the page
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
 
-            // Create an instance of the SavingsAccount class
-            savingsAccount = new SavingsAccount();
+                userID = (int)Session["CustomerId"];
 
-            // Retrieve user balance from the database
-            double currentBalance = GetBalanceFromDatabase(userID);
+                // Create an instance of the SavingsAccount class
+                savingsAccount = new SavingsAccount();
 
-            // Initialize the SavingsAccount instance with the retrieved balance
-            savingsAccount.CurrentBalance = currentBalance;
+                // Retrieve user balance from the database
+                double currentBalance = GetBalanceFromDatabase(userID);
 
+<<<<<<< HEAD
 
             balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Displaying balance (might be good to let user know interest applied on every deposit)
+=======
+                // Initialize the SavingsAccount instance with the retrieved balance
+                savingsAccount.CurrentBalance = currentBalance;
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
 
+                balanceTextBox.Text = savingsAccount.CurrentBalance.ToString();
+                // Displaying balance (might be good to let the user know interest applied on every deposit)
+
+            }
+            else
+            {
+                // Redirect to the login page BCOS THE CUSTOMER ID WILL BE NULL ONLY IF USER NOT LOGGED IN SO WE NEED THEM TO LOGIN
+                Response.Redirect("~/LoginPage.aspx");
+            }
         }
 
         // Method to retrieve user balance from the database
@@ -49,6 +70,7 @@ namespace BankApplication1
 
             if (Session["SavingAccountBalance"] == null)
             {
+<<<<<<< HEAD
                 String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
                 conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
                 conn.Open();
@@ -73,6 +95,15 @@ namespace BankApplication1
             }
 
 
+=======
+                balance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
+                Session["CustomerBalance"] = balance;
+                customerBalance = balance;
+
+            }
+            reader.Close();
+            conn.Close();
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
 
 
             return balance;
@@ -137,12 +168,25 @@ namespace BankApplication1
             balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Current balance updated (might be good to let user know interest applied on every deposit)
         }
 
+<<<<<<< HEAD
+=======
+        protected void AccountDetails_Click(object sender, EventArgs e)
+        {
+            // redirect user into account details page 
+            Response.Redirect("AccountDetails.aspx");
+        }
+
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
         // This method is called when the user clicks a logout button or takes some other action to log out
         protected void LogoutButton_Click(object sender, EventArgs e)
         {
             // Log the user out
             FormsAuthentication.SignOut();
+<<<<<<< HEAD
             Session.Abandon();
+=======
+            Session.Abandon(); // Optional: Abandon the session
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
 
             // Redirect to the login page or any other desired page
             Response.Redirect("~/LoginPage.aspx");

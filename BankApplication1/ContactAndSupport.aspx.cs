@@ -13,6 +13,7 @@ namespace BankApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
 
+<<<<<<< HEAD
             if (!IsPostBack)
             {
                 // Store the previous page URL in a session variable
@@ -49,7 +50,14 @@ namespace BankApplication1
             {
                 Response.Redirect("HomePage.aspx");
             }
+=======
+            // Load the content of your agreement dynamically
+            string filePath = Server.MapPath("~/ContactInformation.pdf");
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
         }
+
+
+
     }
 }
 

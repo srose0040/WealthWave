@@ -51,6 +51,18 @@ namespace BankApplication1
         protected global::System.Web.UI.WebControls.Label lblLastName;
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// image9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image image9;
+
+        /// <summary>
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
         /// btnAccountDetails control.
         /// </summary>
         /// <remarks>

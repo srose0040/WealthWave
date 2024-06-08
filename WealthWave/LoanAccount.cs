@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace WealthWave
 {
-   /*
-    * Class Name:	LoanAccount
-    * Purpose:		The purpose of this class is to provide the necessary data member and logic behind the methods and properties 
-    *               to be applied to a more specialized account type, which is itself the ChequingAccount. It inherits from the base class, Account
-    * By:			Saje Antoine Rose
-    * Abilities:	This class initializes its data members, allows access to its methods and properties.
-    */
+    /*
+     * Class Name:	LoanAccount
+     * Purpose:		The purpose of this class is to provide the necessary data member and logic behind the methods and properties 
+     *               to be applied to a more specialized account type, which is itself the ChequingAccount. It inherits from the base class, Account
+     * By:			Saje Antoine Rose
+     * Abilities:	This class initializes its data members, allows access to its methods and properties.
+     */
     public class LoanAccount : Account
     {
         public double loanInterestRate;
