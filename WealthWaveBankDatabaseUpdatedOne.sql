@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS XyzBank;
+DROP DATABASE IF EXISTS BankApplication;
 
-CREATE DATABASE IF NOT EXISTS XyzBank;
+CREATE DATABASE IF NOT EXISTS BankApplication;
 
-USE XyzBank;
+USE BankApplication;
 
 CREATE TABLE Bank(
 	BankID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -48,11 +48,16 @@ CREATE TABLE Customer(
     FirstName VARCHAR(25) NOT NULL,
     LastName VARCHAR(25) NOT NULL,
     Sex VARCHAR(6),
-    MaritalStatus VARCHAR(10),
+    MaritialStatus  VARCHAR(10),
     CountryStatus VARCHAR(15),
     Address VARCHAR(25),
     PhoneNumber VARCHAR(15),
     DateOfBirth DATE,
+	Password1 VARCHAR(25),
+	Username VARCHAR(12) NOT NULL UNIQUE,
+    LoanAccountBalance DOUBLE,
+    ChequingAccountBalance DOUBLE, 
+    SavingAccountBalance DOUBLE,
     Email VARCHAR(25) NOT NULL UNIQUE,
     SinNumber INT(10) NOT NULL UNIQUE
 );
@@ -71,8 +76,10 @@ CREATE TABLE Employee(
     Address VARCHAR(25),
     PhoneNumber VARCHAR(15),
     DateOfBirth DATE,
+    Password1 VARCHAR(25),
     Email VARCHAR(25) NOT NULL UNIQUE,
     SinNumber INT(10) NOT NULL UNIQUE,
+  
     CONSTRAINT Fk_Employee_BranchId FOREIGN KEY (BranchId) REFERENCES Branch(BranchId),
     CONSTRAINT Fk_Employee_DepartmentId FOREIGN KEY (DepartmentId) REFERENCES Department(DepartmentId)
 );
@@ -134,9 +141,29 @@ INSERT INTO Branch (BankId, BranchName, Address) VALUES
 	(1, "CIBC Branch #3", "?");
 
 /*DESCRIBE Bank;
-DESCRIBE Branch;
+DESCRIBE Branch;MaritalStatus
 DESCRIBE Account;
 DESCRIBE Transaction;
 DESCRIBE Department;
 DESCRIBE Customer;
 DESCRIBE Employee;*/
+
+INSERT INTO Customer (FirstName, LastName, Sex, MaritialStatus, CountryStatus, Address, PhoneNumber, DateOfBirth, Password1, Username,  LoanAccountBalance, ChequingAccountBalance,SavingAccountBalance,Email, SinNumber)
+VALUES
+  ('John', 'Doe', 'Male', 'Single', 'USA', '123 Main St', '123-456-7890', '1990-01-15', 'password123', 'john_doe', 1000.00,2500,5544, 'john.doe@example.com', 123456789),
+  ('Jane', 'Smith', 'Female', 'Married', 'Canada', '456 Oak St', '987-654-3210', '1985-07-22', 'pass456', 'jane_smith',  10088.00,25500,55454, 'jane.smith@example.com', 987654321),
+  ('Bob', 'Johnson', 'Male', 'Single', 'UK', '789 Elm St', '555-123-4567', '1995-03-10', 'securepass', 'bob_j', 10007.00,5500,5544,'bob.j@example.com', 654321987),
+  ('Alice', 'Williams', 'Female', 'Divorced', 'Australia', '101 Pine St', '111-222-3333', '1982-11-05', 'mysecret', 'alice_w',  1700.00,2500,5544, 'alice.w@example.com', 789456123),
+  ('Charlie', 'Davis', 'Male', 'Single', 'Germany', '202 Maple St', '444-555-6666', '1998-09-30', 'access123', 'charlie_d',  6000.00,2700,5044,'charlie.d@example.com', 369852147),
+  ('Eva', 'Brown', 'Female', 'Widowed', 'USA', '303 Cedar St', '777-888-9999', '1970-12-18', 'evapass', 'eva_b',  65400.00,8500,10000, 'eva.b@example.com', 159753468),
+  ('Daniel', 'Miller', 'Male', 'Married', 'Canada', '404 Birch St', '222-333-4444', '1988-04-25', 'danielpass', 'daniel_m',  10900.00,8500,5544, 'daniel.m@example.com', 456789123),
+  ('Sophia', 'Wilson', 'Female', 'Single', 'UK', '505 Oak St', '666-777-8888', '1993-08-12', 'sophiapass', 'sophia_w',  1000.00,2500,5544, 'sophia.w@example.com', 987123456),
+  ('Frank', 'Taylor', 'Male', 'Divorced', 'Australia', '606 Pine St', '333-444-5555', '1978-02-28', 'frankpass', 'frank_t',  1000.00,2500,5544, 'frank.t@example.com', 321654987)
+
+
+
+
+
+
+
+

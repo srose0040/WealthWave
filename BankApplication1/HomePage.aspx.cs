@@ -17,6 +17,17 @@ namespace BankApplication1
             UserDetails userDetails = (UserDetails)Session["UserDetails"];
             if (userDetails != null)
             {
+<<<<<<< HEAD
+              
+                lblFirstName.Text = userDetails.FirstName;
+                lblLastName.Text = userDetails.LastName;
+
+                // Display the welcome message with a new line
+                WelcomeLabel.Text = $"Welcome to WealthWave Bank, {userDetails.FirstName} {userDetails.LastName}!{Environment.NewLine}We are here to provide you with the best banking service.";
+                
+                btnLogout.Click += LogoutButton_Click;
+            }
+=======
 
                 lblFirstName.Text = userDetails.FirstName;
                 lblLastName.Text = userDetails.LastName;
@@ -39,6 +50,7 @@ namespace BankApplication1
                 string relativePath = "Images/image9.png";
                 image9.ImageUrl = relativePath;
             }
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
         }
         protected void AccountDetails_Click(object sender, EventArgs e)
         {

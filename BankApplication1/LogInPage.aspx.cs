@@ -57,7 +57,13 @@ namespace BankApplication1
                             DateTime dateOfBirth = reader.GetDateTime(reader.GetOrdinal("DateOfBirth"));
                             string password = reader.GetString(reader.GetOrdinal("Password1"));
                             string usernameValue = reader.GetString(reader.GetOrdinal("Username"));
+<<<<<<< HEAD
+                            double savingAccountBalance = reader.GetDouble(reader.GetOrdinal("SavingAccountBalance"));
+                            double chequingAccountBalance = reader.GetDouble(reader.GetOrdinal("ChequingAccountBalance"));
+                            double loanAccountBalance = reader.GetDouble(reader.GetOrdinal("LoanAccountBalance"));
+=======
                             double currentBalance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
                             string email = reader.GetString(reader.GetOrdinal("Email"));
                             int sinNumber = reader.GetInt32(reader.GetOrdinal("SinNumber"));
 
@@ -65,7 +71,11 @@ namespace BankApplication1
                             Session["UserName"] = $"{firstName} {lastName}";
                             Session["UserDetails"] = new UserDetails
                             {
+<<<<<<< HEAD
+                                CustomerId= customerId,
+=======
                                 CustomerId = customerId,
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
                                 FirstName = firstName,
                                 LastName = lastName,
                                 Sex = sex,
@@ -76,7 +86,13 @@ namespace BankApplication1
                                 DateOfBirth = dateOfBirth,
                                 Password = password,
                                 Username = usernameValue,
+<<<<<<< HEAD
+                                SavingAccountBalance = savingAccountBalance,
+                                ChequingAccountBalance = chequingAccountBalance,
+                                LoanAccountBalance = loanAccountBalance,
+=======
                                 CurrentBalance = currentBalance,
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
                                 Email = email,
                                 SinNumber = sinNumber
                             };

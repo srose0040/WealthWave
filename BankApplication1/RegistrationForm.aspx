@@ -1,10 +1,23 @@
 ﻿<%@ Page Language="C#" Title="Registration" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrationForm.aspx.cs" Inherits="BankApplication1.RegistrationForm" %>
+
+
+
+
+
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-
-
 
 <div class="form-group "  style="margin-top: 100px;">
     <h3>WealthWave Bank Registration Form</h3>
+
+    <!-- Terms and Conditions -->
+    <div class="form-group" style="margin-bottom: 10px; margin-top: 10px;">
+      <!-- Terms and Conditions -->
+       <div class="form-group" style="margin-bottom: 10px; margin-top: 10px;">
+           <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required />
+           <label for="agreeToTerms"> </label>
+           <label for="agreeToTerms">Read the Terms and Conditions </label>
+           <a href="TermsAndConditions.aspx" target="_blank" id="TermsAndConditions">Terms and Conditions</a>
+       </div>
 
 </div>
     <div class="container">
@@ -104,12 +117,6 @@
                     <asp:TextBox ID="Password1" runat="server" TextMode="Password" CssClass="form-control" />
                 </div>
             </div>
-        </div>
-        
-        <!-- Terms and Conditions -->
-       <div class="form-group" style="margin-bottom: 50px; margin-top: 50px;">
-            <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required />
-            <label for="agreeToTerms">I agree to the terms and conditions </label>
         </div>
         
         <!-- Submit Button -->

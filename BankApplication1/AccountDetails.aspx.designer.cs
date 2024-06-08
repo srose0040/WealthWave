@@ -103,5 +103,17 @@ namespace BankApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmail;
+<<<<<<< HEAD
+
+        /// <summary>
+        /// btnGoBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGoBack;
+=======
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
     }
 }

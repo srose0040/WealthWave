@@ -40,6 +40,10 @@
               color: darkblue;
               font-weight:bolder;
           }
+          h4 {
+              color: darkblue;
+              font-weight: bold;
+          }
           h6 
           {
               color: darkblue;
@@ -88,6 +92,13 @@
               align-items: flex-start;
               margin-left: 50px; /* to Adjust margin */
               align-items: center;
+          }
+          .image-container {
+              display: flex;
+              justify-content: center; /* Center horizontally */
+              align-items: center; /* Center vertically */
+              overflow: hidden; /* Hide overflowing content */
+              border-radius: 20%; /* to make the images circular */
           }
 
 

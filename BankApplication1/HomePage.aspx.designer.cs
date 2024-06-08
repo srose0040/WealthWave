@@ -51,6 +51,8 @@ namespace BankApplication1
         protected global::System.Web.UI.WebControls.Label lblLastName;
 
         /// <summary>
+<<<<<<< HEAD
+=======
         /// image9 control.
         /// </summary>
         /// <remarks>
@@ -60,6 +62,7 @@ namespace BankApplication1
         protected global::System.Web.UI.WebControls.Image image9;
 
         /// <summary>
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
         /// btnAccountDetails control.
         /// </summary>
         /// <remarks>

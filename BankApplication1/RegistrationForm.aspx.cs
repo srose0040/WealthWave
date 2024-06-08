@@ -108,8 +108,13 @@ namespace BankApplication1
 
             querystr = "";
             // INPUT VALIDATION MUST BE DONE TO PREVENT SQL INJECTION
+<<<<<<< HEAD
+            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password1, SavingAccountBalance, ChequingAccountBalance, LoanAccountBalance)" +
+                "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + Password1.Text + "','" + defaultBalance + "','" + defaultBalance + "','" + defaultBalance + "')";
+=======
             querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password1, CurrentBalance)" +
                 "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + Password1.Text + "','" + defaultBalance + "')";
+>>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
 
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
