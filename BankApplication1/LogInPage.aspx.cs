@@ -22,49 +22,6 @@ namespace BankApplication1
 
         }
 
-        //        //protected void SubmitButton_Click(object sender, EventArgs e)
-        //        //{
-
-        //        //    String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
-
-        //        //    conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
-        //        //    conn.Open();
-        //        //    querystr = "";
-        //        //    querystr = "SELECT CustomerId FROM bankapplication.customer WHERE username='" + username.Text + "' AND Password1='" + Password1.Text + "'";
-        //        //    cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
-
-        //        //    reader = cmd.ExecuteReader();
-        //        //    name = "";
-        //        //    while (reader.HasRows & reader.Read())
-        //        //    {
-        //        //        int customerId = reader.GetInt32(reader.GetOrdinal("CustomerID"));
-        //        //        Session["CustomerId"] = customerId;
-
-        //        //        //name += reader.GetString(reader.GetOrdinal("FirstName")) + " " + reader.GetString(reader.GetOrdinal("LastName"));
-        //        //    }
-
-        //        //    if (reader.HasRows)
-        //        //    {
-        //        //        //Session["UserName"] = name;
-
-        //        //        // VALIDATE DATABASE CREDENTIALS
-        //        //        // Redirect to the next page 
-        //        //        Response.BufferOutput = true;
-        //        //        Response.Redirect("HomePage.aspx", false);
-        //        //    }
-        //        //    else
-        //        //    {
-        //        //        // display an error message to the user
-        //        //        Response.Write("<script>alert('Invalid User.');</script>");
-        //        //    }
-
-        //        //    reader.Close();
-        //        //    conn.Close();
-
-
-        //        //}
-
-
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
@@ -97,7 +54,9 @@ namespace BankApplication1
                             DateTime dateOfBirth = reader.GetDateTime(reader.GetOrdinal("DateOfBirth"));
                             string password = reader.GetString(reader.GetOrdinal("Password1"));
                             string usernameValue = reader.GetString(reader.GetOrdinal("Username"));
-                            double currentBalance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
+                            double savingAccountBalance = reader.GetDouble(reader.GetOrdinal("SavingAccountBalance"));
+                            double chequingAccountBalance = reader.GetDouble(reader.GetOrdinal("ChequingAccountBalance"));
+                            double loanAccountBalance = reader.GetDouble(reader.GetOrdinal("LoanAccountBalance"));
                             string email = reader.GetString(reader.GetOrdinal("Email"));
                             int sinNumber = reader.GetInt32(reader.GetOrdinal("SinNumber"));
 
@@ -116,7 +75,9 @@ namespace BankApplication1
                                 DateOfBirth = dateOfBirth,
                                 Password = password,
                                 Username = usernameValue,
-                                CurrentBalance = currentBalance,
+                                SavingAccountBalance = savingAccountBalance,
+                                ChequingAccountBalance = chequingAccountBalance,
+                                LoanAccountBalance = loanAccountBalance,
                                 Email = email,
                                 SinNumber = sinNumber
                             };

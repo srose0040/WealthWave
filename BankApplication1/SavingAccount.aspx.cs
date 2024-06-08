@@ -20,37 +20,26 @@ namespace BankApplication1
         MySql.Data.MySqlClient.MySqlCommand cmd;
         MySql.Data.MySqlClient.MySqlDataReader reader;
         String querystr;
-        String name;
         SavingsAccount savingsAccount;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // I ADDED THIS BECOS I GOT EXCEPTION THRWN WHEN I RUN THE PROGRAM SO INCASE IF ANYONE RUNS IT FROM THIS PAGE IT AUTOMATICALLY TAKES THEM TO LOGIN PAGE 
-            // THE RESEAN IS THAT CUSTOMER ID WILL BE NULL ONLY IF USER NOT LOGGED IN SO WE NEED THEM TO LOGIN
-            if (Session["CustomerId"] != null)
-            {
-                // User is logged in, proceed with loading the page
 
-                userID = (int)Session["CustomerId"];
 
-                // Create an instance of the SavingsAccount class
-                savingsAccount = new SavingsAccount();
+            userID = (int)Session["CustomerId"];
 
-                // Retrieve user balance from the database
-                double currentBalance = GetBalanceFromDatabase(userID);
+            // Create an instance of the SavingsAccount class
+            savingsAccount = new SavingsAccount();
 
-                // Initialize the SavingsAccount instance with the retrieved balance
-                savingsAccount.CurrentBalance = currentBalance;
+            // Retrieve user balance from the database
+            double currentBalance = GetBalanceFromDatabase(userID);
 
-                balanceTextBox.Text = savingsAccount.CurrentBalance.ToString();
-                // Displaying balance (might be good to let the user know interest applied on every deposit)
+            // Initialize the SavingsAccount instance with the retrieved balance
+            savingsAccount.CurrentBalance = currentBalance;
 
-            }
-            else
-            {
-                // Redirect to the login page BCOS THE CUSTOMER ID WILL BE NULL ONLY IF USER NOT LOGGED IN SO WE NEED THEM TO LOGIN
-                Response.Redirect("~/LoginPage.aspx");
-            }
+
+            balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Displaying balance (might be good to let user know interest applied on every deposit)
+
         }
 
         // Method to retrieve user balance from the database
@@ -58,23 +47,33 @@ namespace BankApplication1
         {
             double balance = 0.0;
 
-            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
-            conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
-            conn.Open();
-            querystr = "";
-            querystr = "SELECT CurrentBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
-            cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
-            reader = cmd.ExecuteReader();
-            while (reader.HasRows & reader.Read())
+            if (Session["SavingAccountBalance"] == null)
             {
-                balance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
-                Session["CustomerBalance"] = balance;
-                customerBalance = balance;
-       
+                String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+                conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
+                conn.Open();
+                querystr = "";
+                querystr = "SELECT SavingAccountBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
+                cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
+                reader = cmd.ExecuteReader();
+                while (reader.HasRows & reader.Read())
+                {
+                    balance = reader.GetDouble(reader.GetOrdinal("SavingAccountBalance"));
+                    Session["SavingAccountBalance"] = balance;
+                    customerBalance = balance;
+
+                }
+                reader.Close();
+                conn.Close();
             }
-            reader.Close();
-            conn.Close();
-                     
+            else
+            {
+                balance = (double)Session["SavingAccountBalance"];
+                customerBalance = balance;
+            }
+
+
+
 
             return balance;
         }
@@ -112,12 +111,12 @@ namespace BankApplication1
 
                 // Present message to user
                 ShowMessage.Text = message;
-                
+
 
                 //// Update the database with the new balance
                 UpdateBalanceInDatabase(userID, savingsAccount.CurrentBalance);
             }
-           
+
         }
 
         // Method to set balance in database
@@ -128,20 +127,14 @@ namespace BankApplication1
             conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
             conn.Open();
             querystr = "";
-            querystr = "UPDATE Customer SET CurrentBalance ='" + currentBalance + "' WHERE CustomerId='" + userID.ToString() + "'";
+            querystr = "UPDATE Customer SET SavingAccountBalance ='" + currentBalance + "' WHERE CustomerId='" + userID.ToString() + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
             cmd.ExecuteReader();
             conn.Close();
 
-            Session["CustomerBalance"] = currentBalance;
+            Session["SavingAccountBalance"] = currentBalance;
 
             balanceTextBox.Text = savingsAccount.CurrentBalance.ToString(); // Current balance updated (might be good to let user know interest applied on every deposit)
-        }
-
-        protected void AccountDetails_Click(object sender, EventArgs e)
-        {
-            // redirect user into account details page 
-            Response.Redirect("AccountDetails.aspx");
         }
 
         // This method is called when the user clicks a logout button or takes some other action to log out
@@ -149,7 +142,7 @@ namespace BankApplication1
         {
             // Log the user out
             FormsAuthentication.SignOut();
-            Session.Abandon(); // Optional: Abandon the session
+            Session.Abandon();
 
             // Redirect to the login page or any other desired page
             Response.Redirect("~/LoginPage.aspx");

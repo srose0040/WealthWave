@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Relational;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,5 +22,8 @@ namespace BankApplication1
         public double CurrentBalance { get; set; }
         public string Email { get; set; }
         public int SinNumber { get; set; }
+        public double ChequingAccountBalance { get; set; }
+        public double SavingAccountBalance { get; set; }
+        public double LoanAccountBalance { get; set; }
     }
 }

@@ -7,9 +7,9 @@
         <h1 class="display-4"> User Terms and Conditions</h1>
     </div>
 
-    <div>
+     <div>
           <!-- Embed PDF viewer using iframe -->
-        <iframe src="Content/BankAgreement.pdf" width="100%" height="600px"></iframe>
+        <iframe src="BankAgreement.pdf" width="100%" height="600px"></iframe>
     </div>
 
    <div class="submitButton" style="margin-bottom: 10px; margin-top: 10px;">

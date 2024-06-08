@@ -4,8 +4,8 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="text-center">
-        <h3 class="display-4">Saving Account </h3>
+    <div class="text-center" style= "margin-top: 50px;">
+        <h3 class="display-4">Savings Account </h3>
     </div>
 
      <div>
@@ -21,7 +21,7 @@
 </div>
 <div class="col-md-6">
     <div class="form-group" style="margin-top: 50px;">
-        <label for="balance">Balance:</label>
+        <label for="balance">Current Balance:</label>
         <asp:TextBox ID="balanceTextBox" runat="server" CssClass="form-control" ReadOnly="true"/>
     </div>
 </div>
@@ -52,5 +52,16 @@
 <div>
     <asp:Label ID="ShowMessage" runat="server" ForeColor="Red" Text=""></asp:Label>
 </div>
+
+    <div class="bodyTitles" style="position: absolute; top: 250px; right: 250px;">
+        <h3>Go To:</h3>
+        <ul>
+            <li><asp:HyperLink NavigateUrl="AccountDetails.aspx" Text="Account Details" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="ChequingAccount.aspx" Text="Deposit to Chequings" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="LoanAccount.aspx" Text="Pay off your Loan" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="SettingAndPrivacy.aspx" Text="Setting and Privacy" runat="server" /></li>
+            <li><asp:HyperLink NavigateUrl="ContactAndSupport.aspx" Text="Contact and Support" runat="server" /></li>
+        </ul>
+    </div>
         
 </asp:Content>

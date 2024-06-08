@@ -162,7 +162,6 @@
     <Content Include="About.aspx" />
     <Content Include="AccountDetails.aspx" />
     <Content Include="ChequingAccount.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="ContactAndSupport.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -279,13 +278,6 @@
     </Compile>
     <Compile Include="ChequingAccount.aspx.designer.cs">
       <DependentUpon>ChequingAccount.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="ContactAndSupport.aspx.cs">
       <DependentUpon>ContactAndSupport.aspx</DependentUpon>

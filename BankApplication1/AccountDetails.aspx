@@ -39,4 +39,11 @@
         <asp:Label ID="lblEmail" runat="server" CssClass="label-value" Text=""></asp:Label>
 
     </div>
+
+
+      <!-- go back Submit Button -->
+  <div class="form-group" style="margin-top: 50px;">
+      <asp:Button ID="btnGoBack" CssClass="fancy-button primary-button" Text="Go Back" runat="server" class="btn btn-primary" OnClick="btnGoBack_Click" />
+  </div>
+
 </asp:Content>

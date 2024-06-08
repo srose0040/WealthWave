@@ -228,6 +228,11 @@ namespace WealthWave
                     LoanAmount -= newDepositAmount; // Updating loan amount
                     InterestCalculation();
                 }
+                else if (LoanAmount < 0.02) // Fixes floating point problems
+                {
+                    LoanAmount = 0;
+                    CurrentBalance = 0;
+                }
                 else // they are trying to overfill the account THIS WILL ALSO BE CALLED IF THE USER DOES NOT WITHDRAW THEIR LOAN FIRST
                 {
                     message += "You cannot deposit more than the account will allow. This is a Loan Account, not a Savings Account";

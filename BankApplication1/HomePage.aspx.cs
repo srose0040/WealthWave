@@ -21,23 +21,10 @@ namespace BankApplication1
                 lblFirstName.Text = userDetails.FirstName;
                 lblLastName.Text = userDetails.LastName;
 
-                // Display the welcome message
-                WelcomeLabel.Text = $"Welcome to WealthWave Bank, {userDetails.FirstName} {userDetails.LastName}! We are here to provide you with the best banking service.";
-
-             
-                // Set the image URL using a relative path
-                string relativePath = "Images/image9.png";
-                image9.ImageUrl = relativePath;
-            
-
+                // Display the welcome message with a new line
+                WelcomeLabel.Text = $"Welcome to WealthWave Bank, {userDetails.FirstName} {userDetails.LastName}!{Environment.NewLine}We are here to provide you with the best banking service.";
+                
                 btnLogout.Click += LogoutButton_Click;
-            }
-            else
-            {
-
-                // Set the image URL using a relative path
-                string relativePath = "Images/image9.png";
-                image9.ImageUrl = relativePath;
             }
         }
         protected void AccountDetails_Click(object sender, EventArgs e)

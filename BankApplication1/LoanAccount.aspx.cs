@@ -20,13 +20,9 @@ namespace BankApplication1
         WealthWave.LoanAccount loanAccount;
         protected void Page_Load(object sender, EventArgs e)
         {
-            // I ADDED THIS BECOS I GOT EXCEPTION THRWN WHEN I RUN THE PROGRAM SO INCASE IF ANYONE RUNS IT FROM THIS PAGE IT AUTOMATICALLY TAKES THEM TO LOGIN PAGE 
-            // THE RESEAN IS THAT CUSTOMER ID WILL BE NULL ONLY IF USER NOT LOGGED IN SO WE NEED THEM TO LOGIN
+            
             if (Session["CustomerId"] != null)
             {
-                userID = (int)Session["CustomerId"];
-
-
 
                 if (!IsPostBack)
                 {
@@ -44,6 +40,7 @@ namespace BankApplication1
                 loanAccount.CurrentBalance = currentBalance;
 
                 balanceTextBox.Text = loanAccount.CurrentBalance.ToString(); // Displaying balance 
+
             }
             else
             {
@@ -88,57 +85,6 @@ namespace BankApplication1
             return balance;
         }
 
-        //protected void TransactionButton_Click(object sender, EventArgs e)
-        //{
-        //    if (depositRadioButton.Checked)
-        //    {
-        //        double depositAmount = Convert.ToDouble(amountTextBox.Text);
-
-        //        //Initialize the Account instance with the retrieved balance
-        //        loanAccount.CurrentBalance = customerBalance;
-        //        loanAccount.LoanAmount = (double)Session["LoanAmount"];
-
-        //        //// Perform deposit transaction
-        //        string message;
-        //        loanAccount.DepositTransaction(depositAmount, out message);
-
-        //        Session["LoanAmount"] = loanAccount.LoanAmount;
-
-        //        // Present message to user
-        //        ShowMessage.Text = message;
-
-        //        //// Update the database with the new balance
-        //        UpdateBalanceInDatabase(userID, loanAccount.CurrentBalance);
-        //    }
-        //    else if (withdrawRadioButton.Checked)
-        //    {
-
-        //        double depositAmount = Convert.ToDouble(amountTextBox.Text);
-
-        //        //Initialize the SavingsAccount instance with the retrieved balance
-        //        loanAccount.CurrentBalance = customerBalance;
-        //        loanAccount.LoanAmount = (double)Session["LoanAmount"];
-
-        //        // Apply for loan
-        //        string message;
-        //        loanAccount.ApplyForLoan(depositAmount, out message);
-        //        Session["LoanAmount"] = loanAccount.LoanAmount;
-
-        //        // Present message to user
-        //        ShowMessage.Text = message;
-
-        //        //// Perform deposit transaction
-        //        message = "";
-        //        loanAccount.WithdrawTransaction(depositAmount, out message);
-
-        //        // Present message to user
-        //        ShowMessage.Text = message;
-
-
-        //        //// Update the database with the new balance
-        //        UpdateBalanceInDatabase(userID, loanAccount.CurrentBalance);
-        //    }
-        //}
 
         protected void TransactionButton_Click(object sender, EventArgs e)
         {
@@ -153,12 +99,14 @@ namespace BankApplication1
             {
                 double depositAmount = Convert.ToDouble(amountTextBox.Text);
 
-                // Initialize the Account instance with the retrieved balance
-                loanAccount.CurrentBalance = customerBalance;
-                loanAccount.LoanAmount = (double)Session["LoanAmount"];
+             
 
                 if (depositRadioButton.Checked)
                 {
+                    // Initialize the Account instance with the retrieved balance
+                    loanAccount.CurrentBalance = customerBalance;
+                    loanAccount.LoanAmount = (double)Session["LoanAmount"];
+
                     // Perform deposit transaction
                     string message;
                     loanAccount.DepositTransaction(depositAmount, out message);
@@ -173,6 +121,10 @@ namespace BankApplication1
                 }
                 else if (withdrawRadioButton.Checked)
                 {
+                    // Initialize the Account instance with the retrieved balance
+                    loanAccount.CurrentBalance = customerBalance;
+                    loanAccount.LoanAmount = (double)Session["LoanAmount"];
+
                     // Apply for loan
                     string message;
                     loanAccount.ApplyForLoan(depositAmount, out message);

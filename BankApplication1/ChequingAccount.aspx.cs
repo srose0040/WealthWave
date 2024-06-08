@@ -83,40 +83,54 @@ namespace BankApplication1
 
         protected void TransactionButton_Click(object sender, EventArgs e)
         {
-            if (depositRadioButton.Checked)
+            if (string.IsNullOrEmpty(amountTextBox.Text))
             {
-                double depositAmount = Convert.ToDouble(amountTextBox.Text);
-
-                //Initialize the Account instance with the retrieved balance
-                chequingAccount.CurrentBalance = customerBalance;
-
-                //// Perform deposit transaction
-                string message;
-                chequingAccount.DepositTransaction(depositAmount, out message);
-
-                // Present message to user
-                ShowMessage.Text = message;
-
-                //// Update the database with the new balance
-                UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
+                // Display a reminder message to enter the amount
+                ShowMessage.Text = "Please enter the transaction amount.";
+                return; // Exit the method since the amount is not provided
             }
-            else if (withdrawRadioButton.Checked)
+            try
             {
-                double depositAmount = Convert.ToDouble(amountTextBox.Text);
+                if (depositRadioButton.Checked)
+                {
+                    double depositAmount = Convert.ToDouble(amountTextBox.Text);
 
-                //Initialize the SavingsAccount instance with the retrieved balance
-                chequingAccount.CurrentBalance = customerBalance;
+                    //Initialize the Account instance with the retrieved balance
+                    chequingAccount.CurrentBalance = customerBalance;
 
-                //// Perform deposit transaction
-                string message;
-                chequingAccount.WithdrawTransaction(depositAmount, out message);
+                    //// Perform deposit transaction
+                    string message;
+                    chequingAccount.DepositTransaction(depositAmount, out message);
 
-                // Present message to user
-                ShowMessage.Text = message;
+                    // Present message to user
+                    ShowMessage.Text = message;
+
+                    //// Update the database with the new balance
+                    UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
+                }
+                else if (withdrawRadioButton.Checked)
+                {
+                    double depositAmount = Convert.ToDouble(amountTextBox.Text);
+
+                    //Initialize the SavingsAccount instance with the retrieved balance
+                    chequingAccount.CurrentBalance = customerBalance;
+
+                    //// Perform deposit transaction
+                    string message;
+                    chequingAccount.WithdrawTransaction(depositAmount, out message);
+
+                    // Present message to user
+                    ShowMessage.Text = message;
 
 
-                //// Update the database with the new balance
-                UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
+                    //// Update the database with the new balance
+                    UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
+                }
+            }
+            catch (FormatException)
+            {
+                // Display an error message to the user
+                ShowMessage.Text = "Invalid input format for transaction amount.";
             }
         }
 
