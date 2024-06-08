@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using WealthWave;
 
@@ -11,19 +8,16 @@ namespace BankApplication1
 {
     public partial class ChequingAccount : System.Web.UI.Page
     {
-        // Get the user's ID or username after authentication
         int userID;
         double customerBalance;
         MySql.Data.MySqlClient.MySqlConnection conn;
         MySql.Data.MySqlClient.MySqlCommand cmd;
         MySql.Data.MySqlClient.MySqlDataReader reader;
-        String querystr;
+        string querystr;
         WealthWave.ChequingAccount chequingAccount;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // I ADDED THIS BECOS I GOT EXCEPTION THRWN WHEN I RUN THE PROGRAM SO INCASE IF ANYONE RUNS IT FROM THIS PAGE IT AUTOMATICALLY TAKES THEM TO LOGIN PAGE 
-            // THE RESEAN IS THAT CUSTOMER ID WILL BE NULL ONLY IF USER NOT LOGGED IN SO WE NEED THEM TO LOGIN
             if (Session["CustomerId"] != null)
             {
                 userID = (int)Session["CustomerId"];
@@ -34,14 +28,14 @@ namespace BankApplication1
                 // Retrieve user balance from the database
                 double currentBalance = GetBalanceFromDatabase(userID);
 
-                // Initialize the SavingsAccount instance with the retrieved balance
+                // Initialize the ChequingAccount instance with the retrieved balance
                 chequingAccount.CurrentBalance = currentBalance;
 
                 balanceTextBox.Text = chequingAccount.CurrentBalance.ToString(); // Displaying balance 
             }
             else
             {
-                // Redirect to the login page BCOS THE CUSTOMER ID WILL BE NULL ONLY IF USER NOT LOGGED IN SO WE NEED THEM TO LOGIN
+                // Redirect to the login page if the customer ID is null
                 Response.Redirect("~/LoginPage.aspx");
             }
         }
@@ -53,19 +47,17 @@ namespace BankApplication1
 
             if (Session["ChequingAccountBalance"] == null)
             {
-                String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+                string connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
                 conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
                 conn.Open();
-                querystr = "";
                 querystr = "SELECT ChequingAccountBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
                 cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
                 reader = cmd.ExecuteReader();
-                while (reader.HasRows & reader.Read())
+                while (reader.HasRows && reader.Read())
                 {
                     balance = reader.GetDouble(reader.GetOrdinal("ChequingAccountBalance"));
                     Session["ChequingAccountBalance"] = balance;
                     customerBalance = balance;
-
                 }
                 reader.Close();
                 conn.Close();
@@ -76,109 +68,54 @@ namespace BankApplication1
                 customerBalance = balance;
             }
 
-
-
             return balance;
         }
 
         protected void TransactionButton_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             if (string.IsNullOrEmpty(amountTextBox.Text))
             {
                 // Display a reminder message to enter the amount
                 ShowMessage.Text = "Please enter the transaction amount.";
-                return; // Exit the method since the amount is not provided
+                return;
             }
+
             try
             {
+                double transactionAmount = Convert.ToDouble(amountTextBox.Text);
+                chequingAccount.CurrentBalance = customerBalance;
+
                 if (depositRadioButton.Checked)
                 {
-                    double depositAmount = Convert.ToDouble(amountTextBox.Text);
-
-                    //Initialize the Account instance with the retrieved balance
-                    chequingAccount.CurrentBalance = customerBalance;
-
-                    //// Perform deposit transaction
+                    // Perform deposit transaction
                     string message;
-                    chequingAccount.DepositTransaction(depositAmount, out message);
-
-                    // Present message to user
+                    chequingAccount.DepositTransaction(transactionAmount, out message);
                     ShowMessage.Text = message;
-
-                    //// Update the database with the new balance
-                    UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
                 }
                 else if (withdrawRadioButton.Checked)
                 {
-                    double depositAmount = Convert.ToDouble(amountTextBox.Text);
-
-                    //Initialize the SavingsAccount instance with the retrieved balance
-                    chequingAccount.CurrentBalance = customerBalance;
-
-                    //// Perform deposit transaction
+                    // Perform withdraw transaction
                     string message;
-                    chequingAccount.WithdrawTransaction(depositAmount, out message);
-
-                    // Present message to user
+                    chequingAccount.WithdrawTransaction(transactionAmount, out message);
                     ShowMessage.Text = message;
-
-
-                    //// Update the database with the new balance
-                    UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
                 }
+
+                // Update the database with the new balance
+                UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
             }
             catch (FormatException)
             {
                 // Display an error message to the user
                 ShowMessage.Text = "Invalid input format for transaction amount.";
-=======
-            if (depositRadioButton.Checked)
-            {
-                double depositAmount = Convert.ToDouble(amountTextBox.Text);
-
-                //Initialize the Account instance with the retrieved balance
-                chequingAccount.CurrentBalance = customerBalance;
-
-                //// Perform deposit transaction
-                string message;
-                chequingAccount.DepositTransaction(depositAmount, out message);
-
-                // Present message to user
-                ShowMessage.Text = message;
-
-                //// Update the database with the new balance
-                UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
-            }
-            else if (withdrawRadioButton.Checked)
-            {
-                double depositAmount = Convert.ToDouble(amountTextBox.Text);
-
-                //Initialize the SavingsAccount instance with the retrieved balance
-                chequingAccount.CurrentBalance = customerBalance;
-
-                //// Perform deposit transaction
-                string message;
-                chequingAccount.WithdrawTransaction(depositAmount, out message);
-
-                // Present message to user
-                ShowMessage.Text = message;
-
-
-                //// Update the database with the new balance
-                UpdateBalanceInDatabase(userID, chequingAccount.CurrentBalance);
->>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
             }
         }
 
         // Method to set balance in database
         private void UpdateBalanceInDatabase(int userId, double currentBalance)
         {
-
-            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+            string connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
             conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
             conn.Open();
-            querystr = "";
             querystr = "UPDATE Customer SET ChequingAccountBalance ='" + currentBalance + "' WHERE CustomerId='" + userID.ToString() + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
             cmd.ExecuteReader();
@@ -186,15 +123,8 @@ namespace BankApplication1
 
             Session["ChequingAccountBalance"] = currentBalance;
 
-            balanceTextBox.Text = chequingAccount.CurrentBalance.ToString(); // Current balance updated (might be good to let user know interest applied on every deposit)
+            balanceTextBox.Text = chequingAccount.CurrentBalance.ToString(); // Current balance updated
         }
-
-
-        // USE A DIFFERENT BUTTON FOR THIS
-        //protected void TransactionButton_Click(object sender, EventArgs e)
-        //{
-        //    Response.Redirect("~/TransactionsHistory.aspx");
-        //}
 
         // This method is called when the user clicks a logout button or takes some other action to log out
         protected void LogoutButton_Click(object sender, EventArgs e)
