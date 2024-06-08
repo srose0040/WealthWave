@@ -356,23 +356,6 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="TermsAndConditions.aspx.cs">
-      <DependentUpon>TermsAndConditions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TermsAndConditions.aspx.designer.cs">
-      <DependentUpon>TermsAndConditions.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TransactionsHistory.aspx.cs">
-      <DependentUpon>TransactionsHistory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TransactionsHistory.aspx.designer.cs">
-      <DependentUpon>TransactionsHistory.aspx</DependentUpon>
-    </Compile>
-=======
->>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
     <Compile Include="UserDetails.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

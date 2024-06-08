@@ -21,28 +21,28 @@ namespace BankApplication1
         {
 
         }
-
-
-
-
+        // This method is called when the login button is clicked.
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
+            // Get the connection string from the web.config file
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
-
+            // Create a connection to the database
             using (MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connString))
             {
                 conn.Open();
-
+                // Define the SQL query to check the username and password
                 querystr = "SELECT * FROM bankapplication.customer WHERE username=@username AND Password1=@Password";
+                // Create a MySqlCommand object with parameters
                 using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", username.Text);
                     cmd.Parameters.AddWithValue("@Password", Password1.Text);
-
+                    // Execute the query and read the result
                     using (MySql.Data.MySqlClient.MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows && reader.Read())
                         {
+                            // Store user information in session variables
                             int customerId = reader.GetInt32(reader.GetOrdinal("CustomerId"));
                             Session["CustomerId"] = customerId;
 
@@ -57,13 +57,7 @@ namespace BankApplication1
                             DateTime dateOfBirth = reader.GetDateTime(reader.GetOrdinal("DateOfBirth"));
                             string password = reader.GetString(reader.GetOrdinal("Password1"));
                             string usernameValue = reader.GetString(reader.GetOrdinal("Username"));
-<<<<<<< HEAD
-                            double savingAccountBalance = reader.GetDouble(reader.GetOrdinal("SavingAccountBalance"));
-                            double chequingAccountBalance = reader.GetDouble(reader.GetOrdinal("ChequingAccountBalance"));
-                            double loanAccountBalance = reader.GetDouble(reader.GetOrdinal("LoanAccountBalance"));
-=======
                             double currentBalance = reader.GetDouble(reader.GetOrdinal("CurrentBalance"));
->>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
                             string email = reader.GetString(reader.GetOrdinal("Email"));
                             int sinNumber = reader.GetInt32(reader.GetOrdinal("SinNumber"));
 
@@ -71,11 +65,7 @@ namespace BankApplication1
                             Session["UserName"] = $"{firstName} {lastName}";
                             Session["UserDetails"] = new UserDetails
                             {
-<<<<<<< HEAD
-                                CustomerId= customerId,
-=======
                                 CustomerId = customerId,
->>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
                                 FirstName = firstName,
                                 LastName = lastName,
                                 Sex = sex,
@@ -86,17 +76,11 @@ namespace BankApplication1
                                 DateOfBirth = dateOfBirth,
                                 Password = password,
                                 Username = usernameValue,
-<<<<<<< HEAD
-                                SavingAccountBalance = savingAccountBalance,
-                                ChequingAccountBalance = chequingAccountBalance,
-                                LoanAccountBalance = loanAccountBalance,
-=======
                                 CurrentBalance = currentBalance,
->>>>>>> ffac5bf8acbeee7fa07991c6cfa003738767045d
                                 Email = email,
                                 SinNumber = sinNumber
                             };
-
+                            // Redirect to the home page
                             Response.BufferOutput = true;
                             Response.Redirect("HomePage.aspx", false);
                         }
