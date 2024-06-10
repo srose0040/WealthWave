@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS BankApplication;
+DROP DATABASE IF EXISTS db_aa9c1a_bankapp;
 
-CREATE DATABASE IF NOT EXISTS BankApplication;
+CREATE DATABASE db_aa9c1a_bankapp;
 
-USE BankApplication;
+USE db_aa9c1a_bankapp;
 
 CREATE TABLE Bank(
 	BankID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -171,7 +171,7 @@ VALUES
   ('Grace', 'Scott', 'Female', 'Divorced', 'UK', '1515 Maple St', '888-999-0000', '1981-08-30', 'gracepass', 'grace_s', 1800.50, 'grace.s@example.com', 456852148),
   ('Andrew', 'Ward', 'Male', 'Single', 'Australia', '1616 Birch St', '111-222-3333', '1999-12-05', 'andrewpass', 'andrew_w', 1600.25, 'andrew.w@example.com', 987654323),
   ('Chloe', 'Morgan', 'Female', 'Married', 'Germany', '1717 Oak St', '222-333-4444', '1984-05-28', 'chloepass', 'chloe_m', 1900.00, 'chloe.m@example.com', 654789125);
-ALTER TABLE bankapplication.customer
+ALTER TABLE db_aa9c1a_bankapp.customer
 ADD COLUMN LoanAccountBalance DOUBLE,
 ADD COLUMN ChequingAccountBalance DOUBLE,
 ADD COLUMN SavingAccountBalance DOUBLE;

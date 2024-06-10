@@ -6,10 +6,11 @@
         <h1 class="display-4">Setting And Privacy </h1>
     </div>
 
-    <div>
-        <!-- Embed PDF viewer using iframe -->
-        <iframe src="SettingAndPrivacy.pdf" width="100%" height="600px"></iframe>
-    </div>
+<div>
+    <!-- Display a message about ongoing work -->
+    <p>We are currently updating our settings and privacy features to enhance your experience. We apologize for any inconvenience caused. Please check back later.</p>
+</div>
+
 
     <!-- go back Submit Button -->
     <div class="form-group" style="margin-top: 50px;">
