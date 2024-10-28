@@ -28,7 +28,6 @@ namespace BankApplication1
             string dateOfBirth = DateOfBirth.Text;
             if (!IsValidDate(dateOfBirth))
             {
-
                 // display an error message to the user
                 Response.Write("<script>alert('You must be born before January 1st, 2009 to register for a bank account.');</script>");
             }
@@ -102,17 +101,17 @@ namespace BankApplication1
 
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
 
-            conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
+            conn = new MySql.Data.MySqlClient.MySqlConnection("Server=localhost;Database=db_aa9c1a_bankapp;User Id=root;Password=Ethio-canadian260045;");
 
             conn.Open();
 
             querystr = "";
             // INPUT VALIDATION MUST BE DONE TO PREVENT SQL INJECTION
 
-            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password1, SavingAccountBalance, ChequingAccountBalance, LoanAccountBalance)" +
+            querystr = "INSERT INTO db_aa9c1a_bankapp.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password1, SavingAccountBalance, ChequingAccountBalance, LoanAccountBalance)" +
                 "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + Password1.Text + "','" + defaultBalance + "','" + defaultBalance + "','" + defaultBalance + "')";
 
-            querystr = "INSERT INTO BankApplication.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password1, CurrentBalance)" +
+            querystr = "INSERT INTO db_aa9c1a_bankapp.Customer (FirstName, LastName, Email, PhoneNumber, Sex, MaritialStatus, CountryStatus, Address, DateOfBirth, sinNumber, Username, Password1, CurrentBalance)" +
                 "VALUES('" + firstName.Text + "','" + lastName.Text + "','" + email.Text + "','" + phone.Text + "','" + sex.Text + "','" + MaritialStatus.Text + "','" + CountryStatus.Text + "','" + Address.Text + "','" + DateOfBirth.Text + "','" + sinNumber.Text + "','" + username.Text + "','" + Password1.Text + "','" + defaultBalance + "')";
 
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
@@ -123,7 +122,7 @@ namespace BankApplication1
 
             conn.Open();
             querystr = "";
-            querystr = "SELECT CustomerId FROM bankapplication.customer WHERE username='" + username.Text + "' AND Password1='" + Password1.Text + "'";
+            querystr = "SELECT CustomerId FROM db_aa9c1a_bankapp.customer WHERE username='" + username.Text + "' AND Password1='" + Password1.Text + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
 
             reader = cmd.ExecuteReader();

@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" Title="Loan Account" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SettingAndPrivacy.aspx" Inherits="BankApplication1.SettingAndPrivacy" %>
+﻿<%@ Page Language="C#" Title="Loan Account" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SettingAndPrivacy.aspx" Inherits="BankApplication1.SettingAndPrivacy"%>
+
+
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

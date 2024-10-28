@@ -59,7 +59,7 @@ namespace BankApplication1
                 String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
                 conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
                 conn.Open();
-                querystr = "SELECT LoanAccountBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
+                querystr = "SELECT LoanAccountBalance FROM db_aa9c1a_bankapp.customer WHERE CustomerId='" + userID.ToString() + "'";
                 cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
                 reader = cmd.ExecuteReader();
                 while (reader.HasRows && reader.Read())

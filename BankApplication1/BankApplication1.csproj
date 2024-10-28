@@ -218,8 +218,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <None Include="Properties\PublishProfiles\ermi45-001-site1 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\ermi45-001-site1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\wealthwavebank - FTP.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -402,7 +401,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57252</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44394/</IISUrl>
+          <IISUrl>http://localhost:8080/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -120,8 +120,8 @@ CREATE TABLE Transaction (
 DESCRIBE Transaction;
 
 CREATE TABLE AccountTransaction (
-	AccountId INT(10) NOT NULL,
-	TransactionId INT(10) NOT NULL,
+	AccountId INT NOT NULL,
+	TransactionId INT NOT NULL,
     CONSTRAINT Fk_AccountTransaction_AccountId FOREIGN KEY (AccountId) REFERENCES Account(AccountID),
     CONSTRAINT Fk_AccountTransaction_TransactionId FOREIGN KEY (TransactionId) REFERENCES Transaction(TransactionId)
 );
@@ -169,20 +169,6 @@ VALUES
   ('Andrew', 'Ward', 'Male', 'Single', 'Australia', '1616 Birch St', '111-222-3333', '1999-12-05', 'andrewpass', 'andrew_w', 1600.25, 'andrew.w@example.com', 987654323),
   ('Chloe', 'Morgan', 'Female', 'Married', 'Germany', '1717 Oak St', '222-333-4444', '1984-05-28', 'chloepass', 'chloe_m', 1900.00, 'chloe.m@example.com', 654789125);
 ALTER TABLE db_aa9c1a_bankapp.customer
-ADD COLUMN LoanAccountBalance DOUBLE,
-ADD COLUMN ChequingAccountBalance DOUBLE,
-ADD COLUMN SavingAccountBalance DOUBLE;
-
--- insering a value for the new columns by using  ID  named 'CustomerId'
--- Add columns to the existing Customer table
-ALTER TABLE Customer
-ADD COLUMN LoanAccountBalance DOUBLE,
-ADD COLUMN ChequingAccountBalance DOUBLE,
-ADD COLUMN SavingAccountBalance DOUBLE;
-
--- Update the values for the new columns
--- Add columns to the existing Customer table
-ALTER TABLE Customer
 ADD COLUMN LoanAccountBalance DOUBLE,
 ADD COLUMN ChequingAccountBalance DOUBLE,
 ADD COLUMN SavingAccountBalance DOUBLE;

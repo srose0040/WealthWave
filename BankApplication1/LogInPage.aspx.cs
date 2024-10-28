@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,12 +27,15 @@ namespace BankApplication1
         {
             // Get the connection string from the web.config file
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+
             // Create a connection to the database
-            using (MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connString))
+            // using (MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connString))
+            using (MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection("Server=localhost;Database=db_aa9c1a_bankapp;User Id=root;Password=Ethio-canadian260045;"))
             {
                 conn.Open();
                 // Define the SQL query to check the username and password
-                querystr = "SELECT * FROM bankapplication.customer WHERE username=@username AND Password1=@Password";
+                querystr = "SELECT * FROM db_aa9c1a_bankapp.customer WHERE username=@username AND Password1=@Password";
+
                 // Create a MySqlCommand object with parameters
                 using (MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn))
                 {

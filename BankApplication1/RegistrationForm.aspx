@@ -1,9 +1,5 @@
 ﻿<%@ Page Language="C#" Title="Registration" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrationForm.aspx.cs" Inherits="BankApplication1.RegistrationForm" %>
 
-
-
-
-
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 
 <div class="form-group "  style="margin-top: 100px;">

@@ -57,7 +57,7 @@ namespace BankApplication1
                 conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
                 conn.Open();
                 querystr = "";
-                querystr = "SELECT ChequingAccountBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
+                querystr = "SELECT ChequingAccountBalance FROM db_aa9c1a_bankapp.customer WHERE CustomerId='" + userID.ToString() + "'";
                 cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
                 reader = cmd.ExecuteReader();
                 while (reader.HasRows & reader.Read())
@@ -83,7 +83,7 @@ namespace BankApplication1
         // This method is called when the user performs a transaction (deposit or withdrawal).
         protected void TransactionButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(amountTextBox.Text))
+            if (string.IsNullOrEmpty(amountTextBox1.Text))
             {
                 // Display a reminder message to enter the amount
                 ShowMessage.Text = "Please enter the transaction amount.";
@@ -93,7 +93,7 @@ namespace BankApplication1
             {
                 if (depositRadioButton.Checked)
                 {
-                    double depositAmount = Convert.ToDouble(amountTextBox.Text);
+                    double depositAmount = Convert.ToDouble(amountTextBox1.Text);
 
                     //Initialize the Account instance with the retrieved balance
                     chequingAccount.CurrentBalance = customerBalance;
@@ -110,7 +110,7 @@ namespace BankApplication1
                 }
                 else if (withdrawRadioButton.Checked)
                 {
-                    double depositAmount = Convert.ToDouble(amountTextBox.Text);
+                    double depositAmount = Convert.ToDouble(amountTextBox1.Text);
 
                     //Initialize the SavingsAccount instance with the retrieved balance
                     chequingAccount.CurrentBalance = customerBalance;

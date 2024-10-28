@@ -104,7 +104,6 @@ namespace BankApplication1
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmail;
 
-
         /// <summary>
         /// btnGoBack control.
         /// </summary>
