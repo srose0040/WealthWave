@@ -16,7 +16,7 @@
 <div class="col-md-6">
     <div class="form-group" style="margin-top: 50px;">
         <label for="amount">Amount:</label>
-        <asp:TextBox ID="amountTextBox" runat="server" CssClass="form-control" />
+        <asp:TextBox ID="amountTextBox1" runat="server" CssClass="form-control" />
     </div>
 </div>
 <!--Div for Balance -->

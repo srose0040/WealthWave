@@ -61,7 +61,7 @@ namespace BankApplication1
             conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
             conn.Open();
             querystr = "";
-            querystr = "SELECT CurrentBalance FROM bankapplication.customer WHERE CustomerId='" + userID.ToString() + "'";
+            querystr = "SELECT CurrentBalance FROM db_aa9c1a_bankapp.customer WHERE CustomerId='" + userID.ToString() + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
             reader = cmd.ExecuteReader();
             while (reader.HasRows & reader.Read())
