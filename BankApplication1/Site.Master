@@ -19,7 +19,7 @@
           /* styles go here */
           body 
           {
-              font-family: 'Times New Roman', Times, serif, sans-serif;
+              font-family: 'Arial', Times, serif, sans-serif;
               font-weight: bold;
               margin: 0;
               padding: 0;
