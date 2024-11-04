@@ -26,8 +26,9 @@ namespace BankApplication1
         // This method is called when the login button is clicked.
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
-           // Retrieve the connection string from Web.config
-           string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+            // Retrieve the connection string from Web.config
+            string connectionString = ConfigurationManager.ConnectionStrings["WebAppConnString"].ConnectionString;
+
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {

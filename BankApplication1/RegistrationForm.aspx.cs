@@ -99,9 +99,10 @@ namespace BankApplication1
         {
             double defaultBalance = 0.0;
 
-            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+            //String conn= ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
-            conn = new MySql.Data.MySqlClient.MySqlConnection("Server=wealthywavedatabaseserver.mysql.database.azure.com;Database=db_aa9c1a_bankapp;User Id=root;Password=Ethio-canadian260045;");
+            conn = new MySql.Data.MySqlClient.MySqlConnection("Server=localhost;Database=db_aa9c1a_bankapp;User Id=root;Password=Ethio-canadian260045;");
+
 
             conn.Open();
 

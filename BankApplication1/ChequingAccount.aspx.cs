@@ -51,35 +51,52 @@ namespace BankApplication1
         {
             double balance = 0.0;
 
+            // Check if the balance is already in the session
             if (Session["ChequingAccountBalance"] == null)
             {
                 String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
-                conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
-                conn.Open();
-                querystr = "";
-                querystr = "SELECT ChequingAccountBalance FROM db_aa9c1a_bankapp.customer WHERE CustomerId='" + userID.ToString() + "'";
-                cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn);
-                reader = cmd.ExecuteReader();
-                while (reader.HasRows & reader.Read())
-                {
-                    balance = reader.GetDouble(reader.GetOrdinal("ChequingAccountBalance"));
-                    Session["ChequingAccountBalance"] = balance;
-                    customerBalance = balance;
 
+                using (var conn = new MySql.Data.MySqlClient.MySqlConnection(connString))
+                {
+                    conn.Open();
+
+                    // Use a parameterized query to prevent SQL injection
+                    string querystr = "SELECT ChequingAccountBalance FROM db_aa9c1a_bankapp.customer WHERE CustomerId=@CustomerId";
+                    using (var cmd = new MySql.Data.MySqlClient.MySqlCommand(querystr, conn))
+                    {
+                        // Add the parameter value
+                        cmd.Parameters.AddWithValue("@CustomerId", userId);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read()) // Only read the first result
+                            {
+                                // Check if the ChequingAccountBalance is null
+                                if (!reader.IsDBNull(reader.GetOrdinal("ChequingAccountBalance")))
+                                {
+                                    balance = reader.GetDouble(reader.GetOrdinal("ChequingAccountBalance"));
+                                }
+                                else
+                                {
+                                    // if the value is null then authomaticall be 0/ 
+                                    balance = 0.0; 
+                                }
+
+                                // Store the balance in the session
+                                Session["ChequingAccountBalance"] = balance;
+                            }
+                        }
+                    }
                 }
-                reader.Close();
-                conn.Close();
             }
             else
             {
                 balance = (double)Session["ChequingAccountBalance"];
-                customerBalance = balance;
             }
-
-
 
             return balance;
         }
+
         // This method is called when the user performs a transaction (deposit or withdrawal).
         protected void TransactionButton_Click(object sender, EventArgs e)
         {
