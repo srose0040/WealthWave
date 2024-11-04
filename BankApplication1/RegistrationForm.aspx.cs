@@ -101,7 +101,7 @@ namespace BankApplication1
 
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
 
-            conn = new MySql.Data.MySqlClient.MySqlConnection("Server=localhost;Database=db_aa9c1a_bankapp;User Id=root;Password=Ethio-canadian260045;");
+            conn = new MySql.Data.MySqlClient.MySqlConnection("Server=wealthywavedatabaseserver.mysql.database.azure.com;Database=db_aa9c1a_bankapp;User Id=root;Password=Ethio-canadian260045;");
 
             conn.Open();
 

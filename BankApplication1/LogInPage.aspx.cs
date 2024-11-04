@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -25,12 +26,10 @@ namespace BankApplication1
         // This method is called when the login button is clicked.
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
-            // Get the connection string from the web.config file
-            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
+           // Retrieve the connection string from Web.config
+           string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
 
-            // Create a connection to the database
-            // using (MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connString))
-            using (MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection("Server=localhost;Database=db_aa9c1a_bankapp;User Id=root;Password=Ethio-canadian260045;"))
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
                 // Define the SQL query to check the username and password
