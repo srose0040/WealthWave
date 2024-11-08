@@ -186,6 +186,7 @@
     <Content Include="LogInPage.aspx" />
     <Content Include="RegistrationForm.aspx" />
     <Content Include="SavingAccount.aspx" />
+    <Content Include="TermsAndConditions.aspx" />
     <Content Include="SettingAndPrivacy.aspx" />
     <Content Include="StartPage.aspx" />
     <Content Include="favicon.ico" />
@@ -327,6 +328,13 @@
     </Compile>
     <Compile Include="SavingAccount.aspx.designer.cs">
       <DependentUpon>SavingAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TermsAndConditions.aspx.cs">
+      <DependentUpon>TermsAndConditions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TermsAndConditions.aspx.designer.cs">
+      <DependentUpon>TermsAndConditions.aspx</DependentUpon>
     </Compile>
     <Compile Include="SettingAndPrivacy.aspx.cs">
       <DependentUpon>SettingAndPrivacy.aspx</DependentUpon>
